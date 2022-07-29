@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+import logo from './mask_to_cure.webp';
 import './App.css';
+import {DoctorInOutButton} from "./components/doctorInOutButton";
+import { useState } from "react";
 
 function App() {
+  const doctorStatuses = ["IN", "OUT"];
+  const [doctorStatus, setDoctorStatus] = useState("OUT");
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={logo} className="shaman-mask-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Village Shaman Clinic is now open!
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+        <div className="Clinic-open-status">
+          <h1 className="doctor-in-or-out">The Doctor is {doctorStatus} !</h1>
+          
+          {doctorStatuses.map((status) => (
+            <DoctorInOutButton text={status} setStatus={setDoctorStatus} />
+          ))}
+        </div>
     </div>
   );
 }

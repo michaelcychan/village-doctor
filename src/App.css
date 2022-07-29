@@ -2,9 +2,11 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button.changeStatus {
+  padding: 3px;
+  margin: 2px;
+  background-color: black;
+  color: white
 }
 
 @media (prefers-reduced-motion: no-preference) {
