@@ -2,6 +2,20 @@
 
 This is the front-end of a MERN exercise project using React framework.  It aims as learning in a fun way. There might be many unreasonable settings, feel free to laugh at me.
 
+## Website homepage
+<img src="./references/village-doctor-concept-01.png" height="450">
+
+To draw more images: https://excalidraw.com/#json=P4frf85dlG_Ak_R7SE5mq,jmYSmIqdRw9Puz-xmXkEmw
+
+### Villager's view
+
+<img src="./references/village-doctor-concept-02.png" height="500"> <br>
+<img src="./references/village-doctor-concept-03.png" height="500">
+
+### Doctor's view
+<img src="./references/village-doctor-concept-04.png" height="500">
+
+
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
