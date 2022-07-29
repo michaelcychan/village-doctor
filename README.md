@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# Village Shaman Doctor
+
+This is the front-end of a MERN exercise project using React framework.  It aims as learning in a fun way. There might be many unreasonable settings, feel free to laugh at me.
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

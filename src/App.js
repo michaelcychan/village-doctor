@@ -1,8 +1,9 @@
 import logo from './mask_to_cure.webp';
 import './App.css';
+import { useState } from "react";
 import {DoctorInOutButton} from "./components/doctorInOutButton";
 import {BookingButton} from "./components/bookingButton";
-import { useState } from "react";
+
 
 function App() {
   const doctorStatuses = ["IN", "OUT"];
@@ -24,7 +25,7 @@ function App() {
           Village Shaman Clinic is now open!
         </p>
       </header>
-        <div className="Clinic-open-status">
+        <div className="clinic-status">
           <h1 className="doctor-in-or-out">The Doctor is {doctorStatus} !</h1>
           <h2>There are {waitingPatientTodayNumber + waitingPatientTomorrowNumber} bookings in total.</h2>
           <h3>There are {waitingPatientTodayNumber} bookings for today.</h3>
