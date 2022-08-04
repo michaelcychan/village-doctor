@@ -1,8 +1,38 @@
 # Village Shaman Doctor
 
-This is the front-end of a MERN exercise project using React framework.  It aims as learning in a fun way. There might be many unreasonable settings, feel free to laugh at me.
+This is a MERN exercise project using React framework. It aims as learning in a fun way. There might be many unreasonable settings, feel free to laugh at me.
 
-https://www.youtube.com/watch?v=7CqJlxBYj-M
+The project aims to build a frontend and a backend website for a imaginary village shaman doctor's clinic, where villgers can book appointments with the doctors, or to buy various items from the shaman doctor.
+
+The Frontend folder includes the frontend of the web application while the Backend folder includes the backend of the web application. 
+
+References: <br>
+https://www.youtube.com/watch?v=7CqJlxBYj-M <br>
+https://www.youtube.com/watch?v=mrHNSanmqQ4
+
+## Installation
+Clone the repo to the machine:
+```
+git clone https://github.com/michaelcychan/village-doctor.git
+```
+
+### Backend
+Run:
+```
+npm install
+```
+
+To start the server in testing environment:
+``` 
+npm run start:test
+```
+Leave this terminal open and open another terminal:
+```
+npm run test
+```
+
+
+
 
 ## Website homepage
 <img src="./references/village-doctor-concept-01.png" height="450">
