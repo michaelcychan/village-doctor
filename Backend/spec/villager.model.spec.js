@@ -8,6 +8,7 @@ describe('Villager', () => {
       done();
     });
   });
+
   it('saves a villager to database', (done) => {
     const villager = new Villager({
       villagerpigeonmail: 'flat_head@riverside.hut',
@@ -26,6 +27,20 @@ describe('Villager', () => {
         });
         done();
       });
+    });
+  });
+  it('saves a vilalger to database, testing using async instead of promises', async () => {
+    const newVillager = new Villager({
+      villagerpigeonmail: 'croccodile@hillside.hut',
+      name: 'Croc feather',
+      password: 'password'
+    });
+    await newVillager.save();
+    const findResult = await Villager.find();
+    expect(findResult[0]).toMatchObject({
+      villagerpigeonmail: 'croccodile@hillside.hut',
+      name: 'Croc feather',
+      password: 'password'
     });
   });
 });
