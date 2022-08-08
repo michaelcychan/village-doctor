@@ -22,6 +22,12 @@ Run:
 npm install
 ```
 
+In Windows WSL2 / Linux:
+You need to start the local mongodb server for testing service
+```
+sudo service mongodb start
+```
+
 To start the server in testing environment:
 ``` 
 npm run start:test
@@ -31,6 +37,10 @@ Leave this terminal open and open another terminal:
 npm run test
 ```
 
+To start the server with online Atlas Mongodb:
+```
+npm run start
+```
 
 
 
