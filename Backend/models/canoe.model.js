@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-
 const Schema = mongoose.Schema;
 
+// shopping cart
 const canoeSchema = new Schema({
   content: {
     type: Array,

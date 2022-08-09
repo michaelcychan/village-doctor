@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-
 const Schema = mongoose.Schema;
 
+// appointments
 const bookingSchema = new Schema({
   date: {
     type: Date,
