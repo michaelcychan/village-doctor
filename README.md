@@ -42,30 +42,33 @@ To start the server with online Atlas Mongodb:
 npm run start
 ```
 
+### Database schema diagram
+<img src="./references/database/VillageDoctorRelationshipDiagram.jpg" height="450">
+<br>
 
 
 ## Website homepage
-<img src="./references/village-doctor-concept-01.png" height="450">
+<img src="./references/wireframe/village-doctor-concept-01.png" height="450">
 
 To draw more images: https://excalidraw.com/#json=P4frf85dlG_Ak_R7SE5mq,jmYSmIqdRw9Puz-xmXkEmw
 
 ### Villager's view
 
 Sign up and Login
-<img src="./references/village-doctor-concept-05.png" height="450">
+<img src="./references/wireframe/village-doctor-concept-05.png" height="450">
 <br>
 
 Make booking
-<img src="./references/village-doctor-concept-02.png" height="500">
+<img src="./references/wireframe/village-doctor-concept-02.png" height="500">
 <br>
 
 Shop
-<img src="./references/village-doctor-concept-03.png" height="500">
+<img src="./references/wireframe/village-doctor-concept-03.png" height="500">
 <br>
 ### Doctor's view
 
 Sign up and Login
-<img src="./references/village-doctor-concept-04.png" height="500">
+<img src="./references/wireframe/village-doctor-concept-04.png" height="500">
 <br>
 
 Check schedule and enter doctor's note
