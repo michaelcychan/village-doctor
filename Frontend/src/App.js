@@ -9,7 +9,11 @@ function App() {
   const [doctorStatus, setDoctorStatus] = React.useState('IN');
 
   return (
+
+      
+
     <div className="App">
+      <p>Doctor Log In|| Patient Log In </p> 
       <header className="App-header">
         <img src={logo} className="shaman-mask-logo" alt="logo" />
         <p>
