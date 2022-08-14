@@ -11,7 +11,7 @@ describe('Villager', () => {
 
   it('saves a villager to database', (done) => {
     const villager = new Villager({
-      villagerpigeonmail: 'flat_head@riverside.hut',
+      villagerPigeonMail: 'flat_head@riverside.hut',
       name: 'Flat head',
       password: 'hashedPassword',
       dob: new Date(1995, 0, 1)
@@ -22,7 +22,7 @@ describe('Villager', () => {
       Villager.find((err, villagers) => {
         expect(err).toBeNull();
         expect(villagers[0]).toMatchObject({
-          villagerpigeonmail: 'flat_head@riverside.hut',
+          villagerPigeonMail: 'flat_head@riverside.hut',
           name: 'Flat head',
           password: 'hashedPassword',
           dob: new Date(1995, 0, 1)
@@ -33,7 +33,7 @@ describe('Villager', () => {
   });
   it('saves a vilalger to database, testing using async instead of promises', async () => {
     const newVillager = new Villager({
-      villagerpigeonmail: 'croccodile@hillside.hut',
+      villagerPigeonMail: 'croccodile@hillside.hut',
       name: 'Croc feather',
       password: 'password',
       dob: new Date(1996, 11, 25)
@@ -41,7 +41,7 @@ describe('Villager', () => {
     await newVillager.save();
     const findResult = await Villager.find();
     expect(findResult[0]).toMatchObject({
-      villagerpigeonmail: 'croccodile@hillside.hut',
+      villagerPigeonMail: 'croccodile@hillside.hut',
       name: 'Croc feather',
       password: 'password',
       dob: new Date(1996, 11, 25)

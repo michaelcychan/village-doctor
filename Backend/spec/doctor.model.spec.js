@@ -11,7 +11,7 @@ describe('Doctor', () => {
   it('saves a doctor to database', (done) => {
     const doctor = new Doctor({
       doc_login: 'eaglehead',
-      docname: 'Eagle Head',
+      docName: 'Eagle Head',
       password: 'hashedPassword'
     });
     doctor.save((err) => {
@@ -21,7 +21,7 @@ describe('Doctor', () => {
         expect(err).toBeNull();
         expect(doctors[0]).toMatchObject({
           doc_login: 'eaglehead',
-          docname: 'Eagle Head',
+          docName: 'Eagle Head',
           password: 'hashedPassword'
         });
         done();
@@ -31,14 +31,14 @@ describe('Doctor', () => {
   it('saves a doctor, async bcrypt', async () => {
     const newDoctor = new Doctor({
       doc_login: 'maskeddoc',
-      docname: 'Masked Doc',
+      docName: 'Masked Doc',
       password: 'inputPassword'
     });
     await newDoctor.save();
     const findResult = await Doctor.find();
     expect(findResult[0]).toMatchObject({
       doc_login: 'maskeddoc',
-      docname: 'Masked Doc',
+      docName: 'Masked Doc',
       password: 'inputPassword'
     });
   });
