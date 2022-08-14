@@ -13,7 +13,8 @@ describe('Villager', () => {
     const villager = new Villager({
       villagerpigeonmail: 'flat_head@riverside.hut',
       name: 'Flat head',
-      password: 'hashedPassword'
+      password: 'hashedPassword',
+      dob: new Date(1995, 0, 1)
     });
     villager.save((err) => {
       expect(err).toBeNull();
@@ -23,7 +24,8 @@ describe('Villager', () => {
         expect(villagers[0]).toMatchObject({
           villagerpigeonmail: 'flat_head@riverside.hut',
           name: 'Flat head',
-          password: 'hashedPassword'
+          password: 'hashedPassword',
+          dob: new Date(1995, 0, 1)
         });
         done();
       });
@@ -33,14 +35,16 @@ describe('Villager', () => {
     const newVillager = new Villager({
       villagerpigeonmail: 'croccodile@hillside.hut',
       name: 'Croc feather',
-      password: 'password'
+      password: 'password',
+      dob: new Date(1996, 11, 25)
     });
     await newVillager.save();
     const findResult = await Villager.find();
     expect(findResult[0]).toMatchObject({
       villagerpigeonmail: 'croccodile@hillside.hut',
       name: 'Croc feather',
-      password: 'password'
+      password: 'password',
+      dob: new Date(1996, 11, 25)
     });
   });
 });

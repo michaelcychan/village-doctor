@@ -19,6 +19,9 @@ const villagerSchema = new Schema({
   password: {
     type: String,
     required: true,
+  },
+  dob: {
+    type: Date
   }
 });
 
