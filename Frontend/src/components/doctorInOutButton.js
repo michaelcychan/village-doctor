@@ -1,6 +1,16 @@
 export const DoctorInOutButton = (props) => {
-  const handleClick = () => {
-    props.setStatus(props.text);
-  };
-  return <button class="changeStatus" onClick={handleClick}>I am {props.text}</button>;
+  const setDoctorStatusOut = () => {
+    props.dothis('OUT');
+  }
+
+  const setDoctorStatusIn = () => {
+    props.dothis('IN');
+  }
+
+  return(
+    <div>
+      <button className="changeStatus" onClick={setDoctorStatusOut}>OUT!</button>
+      <button className="changeStatus" onClick={setDoctorStatusIn}>IN!</button>
+    </div>
+  );
 };
