@@ -14,7 +14,8 @@ const DoctorController = {
   Create: (req, res) => {
     bcrypt.hash(req.body.password, saltRound, (error, hashedPassword) => {
       const doctor = new Doctor({
-        docname: req.body.docname,
+        doc_login: req.body.doc_login,
+        docName: req.body.docname,
         password: hashedPassword
       });
       doctor.save((error, result) => {

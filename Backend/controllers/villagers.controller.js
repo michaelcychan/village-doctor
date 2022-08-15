@@ -16,7 +16,8 @@ const VillagerController = {
       const villager = new Villager({
         villagerpigeonmail: req.body.villagerpigeonmail,
         name: req.body.name,
-        password: hashedPassword
+        password: hashedPassword,
+        dob: new Date(req.body.birthyear, req.body.birthmonth - 1, req.body.birthday)
       });
       villager.save((error, result) => {
         if (error) {
@@ -35,7 +36,8 @@ const VillagerController = {
     const villager = new Villager({
       villagerpigeonmail: req.body.villagerpigeonmail,
       name: req.body.name,
-      password: hashedPassword
+      password: hashedPassword, 
+      dob: new Date(req.body.birthyear, req.body.birthmonth - 1, req.body.birthday)
     });
     const result = await villager.save();
     res.json(result);
