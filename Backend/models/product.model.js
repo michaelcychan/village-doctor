@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const productSchema = new Schema({
-  productId: {
+  productID: {
     type: Number
   },
   productName: {
@@ -19,9 +19,14 @@ const productSchema = new Schema({
   imageUri: {
     type: String
   },
-  categoryId: {
-    type: Schema.Types.ObjectId,
-    ref: 'ProductCategory'
+  // each product belongs to one category 
+  categoryID: {
+    type: Number,
+    required: true
+  },
+  //  each product can have multiple tag
+  tag: {
+    type: Array
   }
 });
 

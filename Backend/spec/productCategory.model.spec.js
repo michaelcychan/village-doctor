@@ -10,14 +10,14 @@ describe('ProductCategory', () => {
   });
   it('saves a category to database', async () => {
     const newCat = new ProductCategory({
-      categoryID: 2,
-      categoryName: 'Potion'
+      _id: 2,
+      categoryName: 'Spell'
     });
     await newCat.save();
     const searchResult = await ProductCategory.find();
     expect(searchResult[0]).toMatchObject({
-      categoryID: 2,
-      categoryName: 'Potion'
+      _id: 2,
+      categoryName: 'Spell'
     });
   });
 })
