@@ -13,7 +13,7 @@ describe('Product', () => {
       price: 40,
       description: '+100 health',
       imageUri: 'http://aqwwiki.wdfiles.com/local--files/use-items/PotionRed.png',
-      categoryID: 20
+      category: 'Potion'
     });
     await newProduct.save();
     const searchResult = await Product.find();
@@ -23,7 +23,7 @@ describe('Product', () => {
       price: 40,
       description: '+100 health',
       imageUri: 'http://aqwwiki.wdfiles.com/local--files/use-items/PotionRed.png',
-      categoryID: 20,
+      category: 'Potion',
       tag: []
     });
   });
@@ -34,7 +34,7 @@ describe('Product', () => {
       price: 40,
       description: '+100 health',
       imageUri: 'http://aqwwiki.wdfiles.com/local--files/use-items/PotionRed.png',
-      categoryID: 20
+      category: 'Potion'
     });
     await newPotion.save();
     const newHerb = new Product({
@@ -43,7 +43,7 @@ describe('Product', () => {
       price: 3,
       description: 'An unknown leaf with unknown effect',
       imageUri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Lisc_lipy.jpg/203px-Lisc_lipy.jpg',
-      categoryID: 5
+      category: 'Plant'
     });
     await newHerb.save();
     await Product.findOneAndUpdate({productID: 5}, {$push: {tag: 'dangerous'}});
@@ -56,7 +56,7 @@ describe('Product', () => {
       price: 3,
       description: 'An unknown leaf with unknown effect',
       imageUri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Lisc_lipy.jpg/203px-Lisc_lipy.jpg',
-      categoryID: 5,
+      category: 'Plant',
       tag: ['dangerous', 'unknown']
     });
     expect(searchResultPotion).toMatchObject({
@@ -65,7 +65,7 @@ describe('Product', () => {
       price: 40,
       description: '+100 health',
       imageUri: 'http://aqwwiki.wdfiles.com/local--files/use-items/PotionRed.png',
-      categoryID: 20,
+      category: 'Potion',
       tag: []
     });
   });

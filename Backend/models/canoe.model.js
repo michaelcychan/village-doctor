@@ -3,23 +3,23 @@ const Schema = mongoose.Schema;
 
 // shopping cart
 const canoeSchema = new Schema({
-  content: {
+  // array of productID
+  items: {
     type: Array,
     required: true
   },
-  totalprice: {
+  totalPrice: {
     type: Number,
     required: true
   },
-  delivered: {
-    type: Boolean
-  },
-  hutaddress: {
+  // can copy from buyer, can be different string
+  hutAddress: {
     type: String,
     required: true
   },
-  villagerpigeonmail: {
-    type: Schema.Types.ObjectId, ref: 'Villager',
+  // from buyer
+  villagerPigeonMail: {
+    type: String,
     required: true
   }
 }, {

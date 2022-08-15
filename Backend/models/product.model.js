@@ -20,8 +20,8 @@ const productSchema = new Schema({
     type: String
   },
   // each product belongs to one category 
-  categoryID: {
-    type: Number,
+  category: {
+    type: String,
     required: true
   },
   //  each product can have multiple tag

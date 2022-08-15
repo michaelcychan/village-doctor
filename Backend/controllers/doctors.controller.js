@@ -55,7 +55,11 @@ const DoctorController = {
         }
       })
     .catch(error => console.error(error))
-  }
+  },
+
+  CreateCategory: (req, res) => {
+    console.log('creating product category');
+  },
 };
 
 module.exports = DoctorController;
