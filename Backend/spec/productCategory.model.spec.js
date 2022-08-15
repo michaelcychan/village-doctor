@@ -10,13 +10,13 @@ describe('ProductCategory', () => {
   });
   it('saves a category to database', async () => {
     const newCat = new ProductCategory({
-      _id: 2,
+      categoryID: 2,
       categoryName: 'Spell'
     });
     await newCat.save();
     const searchResult = await ProductCategory.find();
     expect(searchResult[0]).toMatchObject({
-      _id: 2,
+      categoryID: 2,
       categoryName: 'Spell'
     });
   });

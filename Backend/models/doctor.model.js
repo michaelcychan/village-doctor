@@ -13,7 +13,7 @@ const doctorSchema = new Schema({
     type: String,
     trim: true,
   },
-  doc_login: {
+  docLogin: {
     type: String,
     unique: true,
     trim: true

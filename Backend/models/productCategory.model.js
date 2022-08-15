@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const productCategorySchema = new Schema({
-  _id: {
+  categoryID: {
     type: Number,
     unique: true
   },
