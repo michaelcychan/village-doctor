@@ -14,16 +14,18 @@ const DoctorController = {
   },
 
   CreateDoctor: (req, res) => {
+    console.log(req.body);
     bcrypt.hash(req.body.password, saltRound, (error, hashedPassword) => {
       const doctor = new Doctor({
-        doc_login: req.body.doc_login,
-        docName: req.body.docname,
+        docLogin: req.body.docLogin,
+        docName: req.body.docName,
         password: hashedPassword
       });
+      console.log(doctor);
       doctor.save((error, result) => {
         if (error) {
           console.log(error);
-          res.status(409).render('/new');
+          res.status(409).json(error);
         } else {
             res.json('New Doctor joined!')
         }
@@ -33,8 +35,8 @@ const DoctorController = {
 
   LogInDoctor: (req, res) => {
     console.log('trying to log in');
-    docLogin: req.body.docLogin;
-    inputPassword = req.body.password;
+    const docLogin = req.body.docLogin;
+    const inputPassword = req.body.password;
     Doctor.findOne({docLogin: docLogin})
       .then((doctor) => {
         if(!doctor) {

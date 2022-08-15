@@ -21,7 +21,7 @@ const bookingSchema = new Schema({
   attendance: {
     type: Boolean
   },
-  docname: {
+  docName: { // need to change
     type: Schema.Types.ObjectId, ref: 'Doctor'
   },
   doctorsnote: {
