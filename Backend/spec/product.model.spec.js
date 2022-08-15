@@ -27,4 +27,46 @@ describe('Product', () => {
       tag: []
     });
   });
+  it('adds a tag to a product', async () => {
+    const newPotion = new Product({
+      productID: 4,
+      productName: 'Weak healing potion',
+      price: 40,
+      description: '+100 health',
+      imageUri: 'http://aqwwiki.wdfiles.com/local--files/use-items/PotionRed.png',
+      categoryID: 20
+    });
+    await newPotion.save();
+    const newHerb = new Product({
+      productID: 5,
+      productName: 'Strange leaf',
+      price: 3,
+      description: 'An unknown leaf with unknown effect',
+      imageUri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Lisc_lipy.jpg/203px-Lisc_lipy.jpg',
+      categoryID: 5
+    });
+    await newHerb.save();
+    await Product.findOneAndUpdate({productID: 5}, {$push: {tag: 'dangerous'}});
+    await Product.findOneAndUpdate({productID: 5}, {$push: {tag: 'unknown'}});
+    const searchResultHerb = await Product.findOne({productID: 5});
+    const searchResultPotion = await Product.findOne({productID: 4});
+    expect(searchResultHerb).toMatchObject({
+      productID: 5,
+      productName: 'Strange leaf',
+      price: 3,
+      description: 'An unknown leaf with unknown effect',
+      imageUri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Lisc_lipy.jpg/203px-Lisc_lipy.jpg',
+      categoryID: 5,
+      tag: ['dangerous', 'unknown']
+    });
+    expect(searchResultPotion).toMatchObject({
+      productID: 4,
+      productName: 'Weak healing potion',
+      price: 40,
+      description: '+100 health',
+      imageUri: 'http://aqwwiki.wdfiles.com/local--files/use-items/PotionRed.png',
+      categoryID: 20,
+      tag: []
+    });
+  });
 })
