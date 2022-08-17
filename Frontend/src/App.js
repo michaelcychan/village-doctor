@@ -1,48 +1,26 @@
-import logo from './mask_to_cure.webp';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
-import { useState } from "react";
-import {DoctorInOutButton} from "./components/doctorInOutButton";
-import {BookingButton} from "./components/bookingButton";
+import React from "react";
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
+// importing different pages
+import Navbar from './components/navbar.component';
+import Homepage from './components/homepage.component';
+import DoctorPage from './components/doctor.component';
+import VillagerPage from './components/villager.component'; 
 
-function App() {
-  const doctorStatuses = ["IN", "OUT"];
-  const [doctorStatus, setDoctorStatus] = useState("OUT");
-
-  const [waitingPatientTodayNumber, setWaitingPatientTodayNumber] = useState(0);
-  const [waitingPatientTomorrowNumber, setWaitingPatientTomorrowNumber] = useState(0);
-
-  const bookingDays = [
-    {day: "Today", setfunction: setWaitingPatientTodayNumber, counter: waitingPatientTodayNumber},
-    {day: "Tomorrow", setfunction: setWaitingPatientTomorrowNumber, counter: waitingPatientTomorrowNumber}
-  ];
-
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="shaman-mask-logo" alt="logo" />
-        <p>
-          Village Shaman Clinic is now open!
-        </p>
-      </header>
-        <div className="clinic-status">
-          <h1 className="doctor-in-or-out">The Doctor is {doctorStatus} !</h1>
-          <h2>There are {waitingPatientTodayNumber + waitingPatientTomorrowNumber} bookings in total.</h2>
-          <h3>There are {waitingPatientTodayNumber} bookings for today.</h3>
-          <h3>There are {waitingPatientTomorrowNumber} bookings for today.</h3>
-          
-          {bookingDays.map((day) => (
-            <BookingButton day={day.day} setCounter={day.setfunction} counter={day.counter}/>
-          ))}
-          
-        </div>
-        <div className="doctor-use">
-          {doctorStatuses.map((status) => (
-            <DoctorInOutButton text={status} setStatus={setDoctorStatus} />
-          ))}
-        </div>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" exact element={<Homepage />} />
+        <Route path="/doctor" element={<DoctorPage />} />
+        <Route path="/villager" element={<VillagerPage />} />
+      </Routes>
+        
+    </Router>
   );
-}
+};
 
 export default App;
