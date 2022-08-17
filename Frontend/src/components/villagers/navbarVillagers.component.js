@@ -3,16 +3,30 @@ import React , {Component} from 'react';
 import {Link} from 'react-router-dom';
 
 const NavbarVillager = () => {
+  // login variable
+  const [villager, setVillager] = React.useState(null);
+
+  const login = async (villager = null) => {
+    setVillager(villager);
+  }
+
+  const logout = async () => {
+    setVillager(null);
+  }
+
   return (
     <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
       <Link to="/" className="navbar-brand">Village Home</Link>
       <div className="collpase navbar-collapse">
         <ul className='navbar-nav mr-auto'>
           <li className='navbar-item'>
-            <Link to={"/"} className="nav-link">Village Doctor Home</Link>
+            <Link to={"/"} className="nav-link">Villager Home</Link>
           </li>
           <li className='navbar-item'>
-            <Link to={"/doctor"} className="nav-link">Doctor section</Link>
+            <Link to={"/shop"} className="nav-link">Shop</Link>
+          </li>
+          <li className='navbar-item'>
+            <Link to={"/booking"} className="nav-link">Booking</Link>
           </li>
           <li className='navbar-item'>
             { villager ? (
