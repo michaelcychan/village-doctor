@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom';
 const Navbar = () => {
   return (
     <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
-      <Link to="/" className="navbar-brand">Village Doctor Home</Link>
       <div className="collpase navbar-collapse">
         <ul className='navbar-nav mr-auto'>
           <li className='navbar-item'>
