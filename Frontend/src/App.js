@@ -6,6 +6,7 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Navbar from './components/navbar.component';
 import Homepage from './components/homepage.component';
 import DoctorPage from './components/doctors/doctor.component';
+import HomeDoctors from './components/doctors/homeDoctors.component';
 import ManageStock from './components/doctors/manageStock.component';
 import Appointment from './components/doctors/appointment.component';
 import VillagerPage from './components/villagers/villagers.component';
@@ -19,15 +20,16 @@ const App = () => {
       <div className="container">
         <Navbar />
         <Routes>
-          <Route path="/" exact element={<Homepage />} />
-          <Route path="/doctor" element={<DoctorPage />}>
-            <Route path="doctor/manage-stock" element={<ManageStock />} />
-            <Route path="doctor/appointment" elemtn={<Appointment />} />
+          <Route index exact element={<Homepage />} />
+          <Route path="doctor" element={<DoctorPage />}>
+            <Route index element={<HomeDoctors />} />
+            <Route path="stock" element={<ManageStock />} />
+            <Route path="appointment" element={<Appointment />} />
           </Route>
-          <Route path="/villager" element={<VillagerPage />}>
+          <Route path="villager" element={<VillagerPage />}>
             <Route index element={<HomeVillagers />} />
-            <Route path="villager/shop" element={<Shop />} />
-            <Route path="villager/booking" element={<MakeBooking />} />
+            <Route path="shop" element={<Shop />} />
+            <Route path="booking" element={<MakeBooking />} />
           </Route>
         </Routes>
       </div>

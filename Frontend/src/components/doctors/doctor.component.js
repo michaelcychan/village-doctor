@@ -11,7 +11,7 @@ const DoctorPage = () => {
   return(
     <>
       <NavbarDoctor />
-        <p> Villager Component Home</p>
+        <p>Doctor Component Home</p>
     </>
   )
 }
