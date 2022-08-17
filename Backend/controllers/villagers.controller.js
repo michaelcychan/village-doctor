@@ -1,7 +1,7 @@
 const Villager = require('../models/villager.model');
 
 // Bcrypt
-const bcrypt = require('bcrypt');
+const Bcrypt = require('bcrypt');
 const saltRound = 5;
 
 const VillagerController = {
@@ -12,11 +12,12 @@ const VillagerController = {
   },
 
   Create: (req, res) => {
-    bcrypt.hash(req.body.password, saltRound, (error, hashedPassword) => {
+    Bcrypt.hash(req.body.password, saltRound, (error, hashedPassword) => {
       const villager = new Villager({
         villagerpigeonmail: req.body.villagerpigeonmail,
         name: req.body.name,
-        password: hashedPassword
+        password: hashedPassword,
+        dob: new Date(req.body.birthyear, req.body.birthmonth - 1, req.body.birthday)
       });
       villager.save((error, result) => {
         if (error) {
@@ -27,7 +28,20 @@ const VillagerController = {
         }
       })
     });
-  }
+  },
+
+  // need to implement catch for errors
+  CreateAsync: async (req, res) => {
+    const hashedPassword = await Bcrypt.hash(req.body.password, saltRound)
+    const villager = new Villager({
+      villagerpigeonmail: req.body.villagerpigeonmail,
+      name: req.body.name,
+      password: hashedPassword, 
+      dob: new Date(req.body.birthyear, req.body.birthmonth - 1, req.body.birthday)
+    });
+    const result = await villager.save();
+    res.json(result);
+  },
 };
 
 module.exports = VillagerController;

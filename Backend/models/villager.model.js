@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const villagerSchema = new Schema({
-  villagerpigeonmail: {
+  villagerPigeonMail: {
     type: String,
     required: true,
     unique: true,
@@ -19,6 +19,9 @@ const villagerSchema = new Schema({
   password: {
     type: String,
     required: true,
+  },
+  dob: {
+    type: Date
   }
 });
 

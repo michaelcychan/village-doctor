@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-
 const Schema = mongoose.Schema;
 
+// shop stocks
 const stockSchema = new Schema({
   name: {
     type: String,

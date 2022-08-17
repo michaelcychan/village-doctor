@@ -33,7 +33,7 @@ const villagerRouter = require('./routes/villagers');
 // Using routes
 app.use('/villagers', villagerRouter);
 app.use('/bookings', bookingRouter);
-// app.use('/doctor', doctorsRouter);
+app.use('/doctor', doctorsRouter);
 // app.use('/shop', shopRouter);
 
 // when leading to a non-existing route

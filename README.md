@@ -22,6 +22,22 @@ Run:
 npm install
 ```
 
+In Windows WSL2 / Linux:
+You need to start the local mongodb server for testing service
+```
+sudo service mongodb start
+```
+
+To test MongoDB status:
+```
+sudo service postgresql status
+```
+
+To shut down MongoDB:
+```
+sudo service postgresql stop
+```
+
 To start the server in testing environment:
 ``` 
 npm run start:test
@@ -31,31 +47,38 @@ Leave this terminal open and open another terminal:
 npm run test
 ```
 
+To start the server with online Atlas Mongodb:
+```
+npm run start
+```
 
+### Database schema diagram
+<img src="./references/database/VillageDoctorRelationshipDiagram.jpg" height="450">
+<br>
 
 
 ## Website homepage
-<img src="./references/village-doctor-concept-01.png" height="450">
+<img src="./references/wireframe/village-doctor-concept-01.png" height="450">
 
 To draw more images: https://excalidraw.com/#json=P4frf85dlG_Ak_R7SE5mq,jmYSmIqdRw9Puz-xmXkEmw
 
 ### Villager's view
 
 Sign up and Login
-<img src="./references/village-doctor-concept-05.png" height="450">
+<img src="./references/wireframe/village-doctor-concept-05.png" height="450">
 <br>
 
 Make booking
-<img src="./references/village-doctor-concept-02.png" height="500">
+<img src="./references/wireframe/village-doctor-concept-02.png" height="500">
 <br>
 
 Shop
-<img src="./references/village-doctor-concept-03.png" height="500">
+<img src="./references/wireframe/village-doctor-concept-03.png" height="500">
 <br>
 ### Doctor's view
 
 Sign up and Login
-<img src="./references/village-doctor-concept-04.png" height="500">
+<img src="./references/wireframe/village-doctor-concept-04.png" height="500">
 <br>
 
 Check schedule and enter doctor's note

@@ -3,6 +3,7 @@ import './App.css';
 import React from "react";
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
+
 // importing different pages
 import Navbar from './components/navbar.component';
 import Homepage from './components/homepage.component';
@@ -18,7 +19,6 @@ const App = () => {
         <Route path="/doctor" element={<DoctorPage />} />
         <Route path="/villager" element={<VillagerPage />} />
       </Routes>
-        
     </Router>
   );
 };

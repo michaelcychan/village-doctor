@@ -2,7 +2,7 @@ const Booking = require('../models/booking.model');
 
 const BookingController = {
   Index: (req, res) => {
-    res.render('/', {title: "Make a booking", session: req.session});
+    res.json({title: "Make a booking", session: req.session});
   },
   Create: (req, res) => {
     const booking = new Booking({

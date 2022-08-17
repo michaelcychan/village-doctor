@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js --env=dev",
-    "start:test": "nodemon server.js --env=test",
+    "start": "nodemon server.js --env=prod",
+    "start:test": "nodemon server.js --env=local",
     "test": "jest --coverage"
   },
   "keywords": [],

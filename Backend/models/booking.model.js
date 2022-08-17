@@ -1,32 +1,26 @@
 const mongoose = require('mongoose');
-
 const Schema = mongoose.Schema;
 
+// bookings
 const bookingSchema = new Schema({
+  bookingID:{
+    type: Number
+  },
   date: {
     type: Date,
     required: true
   },
-  villagerpigeonmail: {
-    type: Schema.Types.ObjectId, ref: 'Villager',
+  villagerPigeonMail: {
+    type: String,
     required: true
   },
   age: {
     type: Number,
     required: true
   },
-  complainof: {
+  complainOf: {
     type: String
   },
-  attendance: {
-    type: Boolean
-  },
-  docname: {
-    type: Schema.Types.ObjectId, ref: 'Doctor'
-  },
-  doctorsnote: {
-    type: String
-  }
 }, {
   timestamps: true
 });

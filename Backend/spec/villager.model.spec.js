@@ -8,11 +8,13 @@ describe('Villager', () => {
       done();
     });
   });
+
   it('saves a villager to database', (done) => {
     const villager = new Villager({
-      villagerpigeonmail: 'flat_head@riverside.hut',
+      villagerPigeonMail: 'flat_head@riverside.hut',
       name: 'Flat head',
-      password: 'hashedPassword'
+      password: 'hashedPassword',
+      dob: new Date(1995, 0, 1)
     });
     villager.save((err) => {
       expect(err).toBeNull();
@@ -20,12 +22,29 @@ describe('Villager', () => {
       Villager.find((err, villagers) => {
         expect(err).toBeNull();
         expect(villagers[0]).toMatchObject({
-          villagerpigeonmail: 'flat_head@riverside.hut',
+          villagerPigeonMail: 'flat_head@riverside.hut',
           name: 'Flat head',
-          password: 'hashedPassword'
+          password: 'hashedPassword',
+          dob: new Date(1995, 0, 1)
         });
         done();
       });
+    });
+  });
+  it('saves a vilalger to database, testing using async instead of promises', async () => {
+    const newVillager = new Villager({
+      villagerPigeonMail: 'croccodile@hillside.hut',
+      name: 'Croc feather',
+      password: 'password',
+      dob: new Date(1996, 11, 25)
+    });
+    await newVillager.save();
+    const findResult = await Villager.find();
+    expect(findResult[0]).toMatchObject({
+      villagerPigeonMail: 'croccodile@hillside.hut',
+      name: 'Croc feather',
+      password: 'password',
+      dob: new Date(1996, 11, 25)
     });
   });
 });
