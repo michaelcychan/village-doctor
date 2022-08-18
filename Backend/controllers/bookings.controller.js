@@ -6,6 +6,7 @@ const BookingController = {
   },
   Create: (req, res) => {
     const booking = new Booking({
+      // need to update according to model change
       date: Date.parse(req.body.date),
       villagerpigeonmail: req.session.villagerpigeonmail,
       age: req.body.age,

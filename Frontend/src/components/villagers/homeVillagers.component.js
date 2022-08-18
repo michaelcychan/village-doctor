@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 const HomeVillagers = () => {
   return(
     <div>
-      <h1>Landing page</h1> 
+      <h1>Welcome Villagers!</h1> 
       <p> You can go make a booking or a purchase</p>
     </div>
   )

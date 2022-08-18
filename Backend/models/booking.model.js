@@ -14,8 +14,8 @@ const bookingSchema = new Schema({
     type: String,
     required: true
   },
-  age: {
-    type: Number,
+  dob: {
+    type: Date,
     required: true
   },
   complainOf: {

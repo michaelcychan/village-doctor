@@ -1,29 +1,30 @@
 # Village Shaman Doctor
 
-This is a MERN exercise project using React framework. It aims as learning in a fun way. There might be many unreasonable settings, feel free to laugh at me.
+This is a MERN exercise project using React framework. It aims as learning in a fun way. There might be many unreasonable settings, feel free to laugh at me.  
 
-The project aims to build a frontend and a backend website for a imaginary village shaman doctor's clinic, where villgers can book appointments with the doctors, or to buy various items from the shaman doctor.
+The project aims to build a frontend and a backend website for a imaginary village shaman doctor's clinic, where villgers can book appointments with the doctors, or to buy various items from the shaman doctor.  
 
-The Frontend folder includes the frontend of the web application while the Backend folder includes the backend of the web application. 
+The Frontend folder includes the frontend of the web application while the Backend folder includes the backend of the web application.  
 
-References: <br>
-https://www.youtube.com/watch?v=7CqJlxBYj-M <br>
-https://www.youtube.com/watch?v=mrHNSanmqQ4
+References:  
+https://www.youtube.com/watch?v=7CqJlxBYj-M  
+https://www.youtube.com/watch?v=mrHNSanmqQ4  
+https://reactjs.org/docs/hooks-state.html#gatsby-focus-wrapper  
 
 ## Installation
-Clone the repo to the machine:
+Clone the repo to the machine:  
 ```
 git clone https://github.com/michaelcychan/village-doctor.git
 ```
 
 ### Backend
-Run:
+Run:  
 ```
 npm install
 ```
 
-In Windows WSL2 / Linux:
-You need to start the local mongodb server for testing service
+In Windows WSL2 / Linux:  
+You need to start the local mongodb server for testing service  
 ```
 sudo service mongodb start
 ```
@@ -42,12 +43,12 @@ To start the server in testing environment:
 ``` 
 npm run start:test
 ```
-Leave this terminal open and open another terminal:
+Leave this terminal open and open another terminal:  
 ```
 npm run test
 ```
 
-To start the server with online Atlas Mongodb:
+To start the server with online Atlas Mongodb:  
 ```
 npm run start
 ```
