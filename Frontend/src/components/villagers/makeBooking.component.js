@@ -27,7 +27,7 @@ const MakeBooking = (props) => {
     setComplainOf(e.target.value)
   }
 
-  const onsubmit = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
     const newBooking = {
       villagerpigeonmail: villagerPigeonMail,
@@ -40,7 +40,30 @@ const MakeBooking = (props) => {
   }
 
   return(
-    <div> <p>Make Booking</p> </div>
+    <div>
+      <p>Make Booking</p> 
+      <form onSubmit={onSubmit}>
+        <div className='form-group'>
+          <label for="villagerPigeonMail">Your Pigeon Mail:</label>
+          <input required className="form-control" id="villagerPigeonMail" name="villagerPigeonMail" />
+        </div>
+        <div className='form-group'>
+          <label for="complainOf">Your complaint:</label>
+          <input required className="form-control" type="text" id="complainOf" name="complainOf" />
+        </div>
+        <div className='form-group'>
+          <label for="dob">Date of Birth:</label>
+          <input required type ="date" id="dob" name="dob" class="form-control"/>
+        </div>
+        <div className='form-group'>
+          <label for="date">Your booking date:</label>
+          <input required type="date" id="date" name="date" class="form-control"/>
+        </div>
+        <div className='form-group'>
+          <input type="submit" className="btn btn-success" />
+        </div>
+      </form>
+    </div>
   )
 }
 
