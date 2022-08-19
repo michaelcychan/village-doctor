@@ -1,6 +1,7 @@
 // eslint-disable-next-line
 import React, {Component} from 'react';
 import logo from '../mask_to_cure.webp';
+import {Link} from 'react-router-dom';
 
 const Homepage = () => {
   // const doctorStatuses = ["IN", "OUT"];
@@ -16,10 +17,12 @@ const Homepage = () => {
 
   return (
     <div>
-        <img src={logo} className="shaman-mask-logo" alt="logo" />
-        <p>
-          Village Shaman Clinic is now open!
-        </p>
+      <Link to={"/"} className="nav-link"><img src={logo} className="shaman-mask-logo" alt="logo" /></Link>
+      <Link to={"/doctor"} className="nav-link">Doctor section</Link>
+      <Link to={"/villager"} className="nav-link">Villager section</Link>
+      <p>
+        Village Shaman Clinic is now open!
+      </p>
       {/* <div className="clinic-status">
         <h1 className="doctor-in-or-out">The Doctor is {doctorStatus} !</h1>
         <h2>There are {waitingPatientTodayNumber + waitingPatientTomorrowNumber} bookings in total.</h2>

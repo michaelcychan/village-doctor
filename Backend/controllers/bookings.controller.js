@@ -8,11 +8,9 @@ const BookingController = {
     const booking = new Booking({
       // need to update according to model change
       date: Date.parse(req.body.date),
-      villagerpigeonmail: req.session.villagerpigeonmail,
-      age: req.body.age,
+      villagerpigeonmail: req.body.villagerpigeonmail,
+      dob: req.body.dob,
       complainof: req.body.complainof,
-      attendance: false,
-      doctorsnote: ""
     });
     booking.save((error, result) => {
       if (error) {

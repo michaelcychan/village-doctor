@@ -1,8 +1,5 @@
 import React from "react";
-import { Link, BrowserRouter as Router,
-  Routes,
-  Route,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 // importing different pages
@@ -20,9 +17,10 @@ import Shop from './components/villagers/shop.component';
 const App = () => {
   return (
     <div className="container">
-      
+      <Router>
+        <Navbar />
         <Routes>
-          <Route path="/" exact element={<Homepage />} />
+          <Route index exact element={<Homepage />} />
           <Route path="villager" element={<VillagerPage />}>
             <Route index element={<HomeVillagers />} />
             <Route path="shop" element={<Shop />} />
@@ -33,9 +31,8 @@ const App = () => {
             <Route path="stock" element={<ManageStock />} />
             <Route path="appointment" element={<Appointment />} />
           </Route>
-          
         </Routes>
-        
+      </Router>
     </div>
   );
 };
