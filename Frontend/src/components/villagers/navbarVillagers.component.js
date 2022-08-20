@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import React , {Component} from 'react';
+import React , {Component, Button} from 'react';
 import {Link, Outlet} from 'react-router-dom';
 
 const NavbarVillager = () => {
@@ -17,9 +17,18 @@ const NavbarVillager = () => {
           <li className='navbar-item'>
             <Link to={"booking"} className="nav-link">Booking</Link>
           </li>
-          <li className='navbar-item'>
-            <Link to={"sign-up"} className="nav-link">Sign Up</Link>
+          <li className="navbar-item dropdown">
+            <Link to={"#"} className="nav-link dropdown-toggle" role="Button" data-bs-toggle="dropdown" aria-expanded="false">Log-In</Link>
+          <ul className='dropdown-menu'>
+            <li className='navbar-item'>
+              <Link to={"log-up"} className="nav-link">Log-In</Link>
+            </li>
+            <li className='navbar-item'>
+              <Link to={"sign-up"} className="nav-link">Sign Up</Link>
+            </li>
+          </ul>
           </li>
+          
           <li className='navbar-item'>
             <Link to={"/"} className="nav-link">Back to Home</Link>
           </li>

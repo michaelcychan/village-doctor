@@ -50,11 +50,11 @@ const SignUpVillager = (props) => {
           <input required className="form-control" type="text" id="name" name="name" />
         </div>
         <div className='form-group'>
-          <label htmlFor="passwordname">Your name:</label>
+          <label htmlFor="passwordname">Your password:</label>
           <input required className="form-control" type="text" id="password" name="password" />
         </div>
         <div className='form-group'>
-          <label htmlFor='dob'>Appointment Date:</label>
+          <label htmlFor='dob'>Your Birthday:</label>
           <input required type='date' className='form-control' id='dob' name='dob' />
         </div>
         <div className='form-group'>

@@ -14,7 +14,8 @@ import ManageStock from './components/doctors/manageStock.component';
 import Appointment from './components/doctors/appointment.component';
 import VillagerPage from './components/villagers/villagers.component';
 import HomeVillagers from './components/villagers/homeVillagers.component';
-import SignUpVillager from './components/villagers/signUpVillager.component'
+import SignUpVillager from './components/villagers/signUpVillager.component';
+import LogInVillager from './components/villagers/logInVillager.component';
 import MakeBooking from './components/villagers/makeBooking.component';
 import Shop from './components/villagers/shop.component';
 
@@ -27,6 +28,7 @@ const App = () => {
           <Route path="villager" element={<VillagerPage />}>
             <Route index element={<HomeVillagers />} />
             <Route path="sign-up" element={<SignUpVillager />} />
+            <Route path="log-in" element={<LogInVillager />} />
             <Route path="shop" element={<Shop />} />
             <Route path="booking" element={<MakeBooking />} />
           </Route>
