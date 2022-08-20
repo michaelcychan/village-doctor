@@ -3,7 +3,8 @@ import { Link, BrowserRouter as Router,
   Routes,
   Route,
 } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.bundle';
 
 // importing different pages
 import Navbar from './components/navbar.component';
