@@ -3,6 +3,11 @@ import React, {Component, useState} from 'react';
 
 const MakeBooking = (props) => {
 
+  
+  const today = new Date();
+  const daysInAdvance = 2;
+  const defaultBookingDate = new Date(today.setDate(today.getDate() + daysInAdvance));
+
   // using hooks rather than class
   const [villagerPigeonMail, setVillagerPigeonMail] = useState(null);
   const [date, setDate] = useState(null);
@@ -44,20 +49,20 @@ const MakeBooking = (props) => {
       <p>Make Booking</p> 
       <form onSubmit={onSubmit}>
         <div className='form-group'>
-          <label for="villagerPigeonMail">Your Pigeon Mail:</label>
+          <label htmlFor="villagerPigeonMail">Your Pigeon Mail:</label>
           <input required className="form-control" id="villagerPigeonMail" name="villagerPigeonMail" />
         </div>
         <div className='form-group'>
-          <label for="complainOf">Your complaint:</label>
+          <label htmlFor="complainOf">Your complaint:</label>
           <input required className="form-control" type="text" id="complainOf" name="complainOf" />
         </div>
         <div className='form-group'>
-          <label for="dob">Date of Birth:</label>
-          <input required type ="date" id="dob" name="dob" class="form-control"/>
+          <label htmlFor="dob">Date of Birth:</label>
+          <input required type ="date" id="dob" name="dob" className="form-control"/>
         </div>
         <div className='form-group'>
-          <label for="date">Your booking date:</label>
-          <input required type="date" id="date" name="date" class="form-control"/>
+          <label htmlFor="date">Your booking date:</label>
+          <input required type="date" id="date" name="date" className="form-control" defaultValue={defaultBookingDate.toISOString().split('T')[0]} />
         </div>
         <div className='form-group'>
           <input type="submit" className="btn btn-success" />
