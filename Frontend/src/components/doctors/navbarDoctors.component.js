@@ -5,18 +5,21 @@ import {Link, Outlet} from 'react-router-dom';
 const NavbarDoctor = () => {
   return (
     <>
-      <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
+      <nav className="navbar navbar-danger bg-danger navbar-expand-lg">
         <div className="collpase navbar-collapse">
           <ul className='navbar-nav mr-auto'>
             <li className='navbar-item'>
-              <Link to={"/doctor"} className="nav-link">Doctor Home</Link>
+              <Link to={""} className="nav-link">Doctor Home</Link>
             </li>
             <li className='navbar-item'>
-              <Link to={"/doctor/stock"} className="nav-link">Stock Management</Link>
+              <Link to={"stock"} className="nav-link">Stock Management</Link>
             </li>
             <li className='navbar-item'>
-              <Link to={"/doctor/appointment"} className="nav-link">Appointment</Link>
+              <Link to={"appointment"} className="nav-link">Appointment</Link>
             </li>
+            <li className='navbar-item'>
+            <Link to={"/"} className="nav-link">Back to Home</Link>
+          </li>
           </ul>
         </div>
       </nav>
