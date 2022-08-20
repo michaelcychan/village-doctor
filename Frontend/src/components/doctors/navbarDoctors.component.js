@@ -5,17 +5,22 @@ import {Link, NavLink, Outlet} from 'react-router-dom';
 const NavbarDoctor = () => {
   return (
     <>
-      <nav className="navbar navbar-danger bg-danger navbar-expand-lg">
+      <nav className="navbar navbar-danger bg-danger navbar-expand-md">
         <div className='container navbar-collapse'>
         <Link to={""} className="nav-link">Doctor Home</Link>
-          <div className="navbar-collapse collapse"> 
-            <ul className='navbar-nav mr-auto'>
+        <button className="navbar-toggler" type='button' data-bs-toggle="collapse" data-bs-target="#collapsingNavbarDoctor">
+          <span className='navbar-toggler-icon'></span>
+        </button>
+          <div className="navbar-collapse collapse" id="collapsingNavbarDoctor"> 
+            <ul className="mx-auto w-70 navbar-nav justify-content-center">
               <li className='navbar-item'>
                 <Link to={"stock"} className="nav-link">Stock Management</Link>
               </li>
               <li className='navbar-item'>
                 <Link to={"appointment"} className="nav-link">Appointment</Link>
               </li>
+            </ul>
+            <ul className="nav navbar-nav ms-auto">
               <li className='navbar-item'>
               <Link to={"/"} className="nav-link">Back to Home</Link>
             </li>
