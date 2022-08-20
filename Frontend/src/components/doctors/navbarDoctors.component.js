@@ -19,6 +19,9 @@ const NavbarDoctor = () => {
               <li className='navbar-item'>
                 <Link to={"appointment"} className="nav-link">Appointment</Link>
               </li>
+              <li className='navbar-item'>
+              <NavLink to={"log-up"} className="nav-link">Log-In</NavLink>
+            </li>
             </ul>
             <ul className="nav navbar-nav ms-auto">
               <li className='navbar-item'>

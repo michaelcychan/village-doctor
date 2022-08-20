@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 
-export const LogInVillager = (props) => {
-  const [villagerPigeonMail, setVillagerPigeonMail] = useState(null);
+export const LogInDoctor = (props) => {
+  const [docLogin, setDocLogin] = useState(null);
   const [password, setPassword] = useState(null);
-  
-  const onChangeVillagerPigeonMail = e => {
-    setVillagerPigeonMail(e.target.value);
+
+  const onChangeDocLogin = e => {
+    setDocLogin(e.target.value);
   }
 
   const onChangePassword = e => {
@@ -14,20 +14,20 @@ export const LogInVillager = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const logInVillager = {
-      villagerPigeonMail: villagerPigeonMail,
+    const logInDoctor = {
+      docLogin: docLogin,
       password: password
     }
-    console.log(logInVillager);
+    console.log(logInDoctor);
   }
 
   return (
     <div className='page-container'>
-      <h1>Villager Log in page</h1>
+      <h1>Doctor Log in page</h1>
       <form onSubmit={onSubmit}>
       <div className='form-group'>
-          <label htmlFor="villagerPigeonMail">Your Pigeon Mail:</label>
-          <input required className="form-control" type="text" id="villagerPigeonMail" name="villagerPigeonMail" />
+          <label htmlFor="docLogin">Your Doctor Login:</label>
+          <input required className="form-control" type="text" id="docLogin" name="docLogin" />
         </div>
         <div className='form-group'>
           <label htmlFor="password">Your password:</label>
@@ -39,6 +39,6 @@ export const LogInVillager = (props) => {
       </form>
     </div>
   )
-} 
+}
 
-export default LogInVillager;
+export default LogInDoctor;

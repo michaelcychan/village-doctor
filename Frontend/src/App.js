@@ -11,6 +11,7 @@ import Navbar from './components/navbar.component';
 import Homepage from './components/homepage.component';
 import DoctorPage from './components/doctors/doctor.component';
 import HomeDoctors from './components/doctors/homeDoctors.component';
+import LogInDoctor from './components/doctors/logInDoctor.component';
 import ManageStock from './components/doctors/manageStock.component';
 import Appointment from './components/doctors/appointment.component';
 import VillagerPage from './components/villagers/villagers.component';
@@ -23,7 +24,6 @@ import Shop from './components/villagers/shop.component';
 const App = () => {
   return (
     <div className="container">
-      
         <Routes>
           <Route path="/" exact element={<Homepage />} />
           <Route path="villager" element={<VillagerPage />}>
@@ -35,12 +35,11 @@ const App = () => {
           </Route>
           <Route path="doctor" element={<DoctorPage />}>
             <Route index element={<HomeDoctors />} />
+            <Route path='log-in' element={<LogInDoctor />} />
             <Route path="stock" element={<ManageStock />} />
             <Route path="appointment" element={<Appointment />} />
           </Route>
-          
         </Routes>
-        
     </div>
   );
 };
