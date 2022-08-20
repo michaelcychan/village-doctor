@@ -1,24 +1,21 @@
 import React, {useState} from 'react';
 
 export const LogInDoctor = (props) => {
-  const [docLogin, setDocLogin] = useState(null);
-  const [password, setPassword] = useState(null);
-
-  const onChangeDocLogin = e => {
-    setDocLogin(e.target.value);
+  const initialDoctorState = {
+    docLogin: "",
+    password: ""
   }
 
-  const onChangePassword = e => {
-    setPassword(e.target.value);
-  }
+  const [doctor, setDoctor] = useState(initialDoctorState);
+
+  const handleInputChange = event => {
+    const {name, value} = event.target;
+    setDoctor({...doctor, [name]: value});
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const logInDoctor = {
-      docLogin: docLogin,
-      password: password
-    }
-    console.log(logInDoctor);
+    console.log(doctor);
   }
 
   return (
@@ -27,11 +24,27 @@ export const LogInDoctor = (props) => {
       <form onSubmit={onSubmit}>
       <div className='form-group'>
           <label htmlFor="docLogin">Your Doctor Login:</label>
-          <input required className="form-control" type="text" id="docLogin" name="docLogin" />
+          <input
+            required
+            className="form-control"
+            type="text"
+            id="docLogin"
+            name="docLogin"
+            value={doctor.docLogin}
+            onChange={handleInputChange}
+          />
         </div>
         <div className='form-group'>
           <label htmlFor="password">Your password:</label>
-          <input required className="form-control" type="text" id="password" name="password" />
+          <input
+            required
+            className="form-control"
+            type="text"
+            id="password"
+            name="password"
+            value={doctor.password}
+            onChange={handleInputChange}
+          />
         </div>
         <div className='form-group'>
           <input type="submit" className="btn btn-success" />

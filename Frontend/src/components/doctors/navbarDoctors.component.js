@@ -20,7 +20,7 @@ const NavbarDoctor = () => {
                 <Link to={"appointment"} className="nav-link">Appointment</Link>
               </li>
               <li className='navbar-item'>
-              <NavLink to={"log-up"} className="nav-link">Log-In</NavLink>
+              <NavLink to={"log-in"} className="nav-link">Log-In</NavLink>
             </li>
             </ul>
             <ul className="nav navbar-nav ms-auto">

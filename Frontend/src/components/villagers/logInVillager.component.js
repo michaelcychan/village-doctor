@@ -1,24 +1,22 @@
 import React, {useState} from 'react';
 
 export const LogInVillager = (props) => {
-  const [villagerPigeonMail, setVillagerPigeonMail] = useState(null);
-  const [password, setPassword] = useState(null);
-  
-  const onChangeVillagerPigeonMail = e => {
-    setVillagerPigeonMail(e.target.value);
-  }
+  const initialVillagerState = {
+    villagerPigeonMail: "",
+    password: ""
+  };
 
-  const onChangePassword = e => {
-    setPassword(e.target.value);
-  }
+  const [villager, setVillager] = useState(initialVillagerState);
+
+
+  const handleInputChange = event => {
+    const {name, value} = event.target;
+    setVillager({...villager, [name]: value});
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const logInVillager = {
-      villagerPigeonMail: villagerPigeonMail,
-      password: password
-    }
-    console.log(logInVillager);
+    console.log(villager);
   }
 
   return (
@@ -27,11 +25,27 @@ export const LogInVillager = (props) => {
       <form onSubmit={onSubmit}>
       <div className='form-group'>
           <label htmlFor="villagerPigeonMail">Your Pigeon Mail:</label>
-          <input required className="form-control" type="text" id="villagerPigeonMail" name="villagerPigeonMail" />
+          <input
+            required
+            className="form-control"
+            type="text"
+            id="villagerPigeonMail"
+            name="villagerPigeonMail"
+            value={villager.villagerPigeonMail}
+            onChange={handleInputChange}
+          />
         </div>
         <div className='form-group'>
           <label htmlFor="password">Your password:</label>
-          <input required className="form-control" type="text" id="password" name="password" />
+          <input
+            required
+            className="form-control"
+            type="text"
+            id="password"
+            name="password"
+            value={villager.password}
+            onChange={handleInputChange}
+          />
         </div>
         <div className='form-group'>
           <input type="submit" className="btn btn-success" />
