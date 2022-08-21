@@ -1,29 +1,41 @@
 // eslint-disable-next-line
 import React , {Component} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, NavLink, Outlet} from 'react-router-dom';
 
 const NavbarVillager = () => {
   return (
-    <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
-      <Link to="/" className="navbar-brand">Village Home</Link>
-      <div className="collpase navbar-collapse">
-        <ul className='navbar-nav mr-auto'>
-          <li className='navbar-item'>
-            <Link to={"/"} className="nav-link">Village Doctor Home</Link>
-          </li>
-          <li className='navbar-item'>
-            <Link to={"/doctor"} className="nav-link">Doctor section</Link>
-          </li>
-          <li className='navbar-item'>
-            { villager ? (
-              <a onClick={logout} className="nav-link">Logout {villager.name}</a>
-            ) : (
-              <Link to={"/login"} className="nav-link">Login</Link>
-            )}
-          </li>
-        </ul>
+    <>
+    <nav className="navbar navbar-success bg-success navbar-expand-md">
+      <div className="container navbar-collapse">
+        <Link to={""} className="nav-link">Villager Home</Link>
+        <button className="navbar-toggler" type='button' data-bs-toggle="collapse" data-bs-target="#collapsingNavbarVillagers">
+          <span className='navbar-toggler-icon'></span>
+        </button>
+        <div className="justify-content-center collapse navbar-collapse" id="collapsingNavbarVillagers">
+          <ul className="mx-auto w-70 navbar-nav justify-content-center">
+            <li className='navbar-item'>
+              <NavLink to={"shop"} className="nav-link">Shop</NavLink>
+            </li>
+            <li className='navbar-item'>
+              <NavLink to={"booking"} className="nav-link">Booking</NavLink>
+            </li>
+            <li className='navbar-item'>
+              <NavLink to={"log-in"} className="nav-link">Log-In</NavLink>
+            </li>
+            <li className='navbar-item'>
+              <NavLink to={"sign-up"} className="nav-link">Sign Up</NavLink>
+            </li>
+          </ul>
+          <ul className="nav navbar-nav ms-auto">
+            <li className='navbar-item'>
+              <NavLink to={"/"} className="nav-link">Back to Home</NavLink>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
+    <Outlet />
+    </>
   );
 };
 

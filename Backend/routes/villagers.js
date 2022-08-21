@@ -3,6 +3,6 @@ const VillagerController = require('../controllers/villagers.controller')
 
 router.get('/new', VillagerController.Index);
 router.post('/add', VillagerController.Create);
-router.post('/add-new', VillagerController.CreateAsync);
+router.post('/addnewvillager', VillagerController.CreateAsync);
 
 module.exports = router;
