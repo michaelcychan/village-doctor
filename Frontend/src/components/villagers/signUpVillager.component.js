@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import VillagerDataService from '../../services/villagers.service';
 
 const SignUpVillager = (props) => {
 
@@ -17,23 +18,19 @@ const SignUpVillager = (props) => {
     setVillagerSignUpInfo({...villagerSignUpInfo, [name]: value});
   };
 
-
   const dataSubmission = {
+    headers: {
+      Accept: 'application/json',
+      "Content-type": "application/json"
+    },
     method: 'POST',
     body: JSON.stringify(villagerSignUpInfo)
   };
-  
-  const signUp = () => {
-    return fetch
-  }
-
-
 
   const onSubmit = (e) => {
-    
-
     e.preventDefault();
-    console.log(villagerSignUpInfo);
+    console.log(dataSubmission);
+    fetch('http://localhost:8000/villagers/addnewvillager', dataSubmission)
   }
 
   return(

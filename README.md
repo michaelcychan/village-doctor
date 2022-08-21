@@ -8,13 +8,13 @@ The Frontend folder includes the frontend of the web application while the Backe
 
 ## Tech invovled:
 ### Frontend
-[React](https://reactjs.org/) - Frontend frameworkd
-[bootstrap](https://getbootstrap.com/) - Styling 
+[React](https://reactjs.org/) - Frontend framework  
+[bootstrap](https://getbootstrap.com/) - Styling  
 
 ### Backend
-[MongoDB](https://www.mongodb.com/) - Database
-[Node.js](https://nodejs.org/en/) - Javascript Runtime
-[Express](https://expressjs.com/) - Web server framework for Node.js
+[MongoDB](https://www.mongodb.com/) - Database  
+[Node.js](https://nodejs.org/en/) - Javascript Runtime  
+[Express](https://expressjs.com/) - Web server framework for Node.js  
 
 
 References:  
@@ -131,34 +131,3 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

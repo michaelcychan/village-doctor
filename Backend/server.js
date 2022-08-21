@@ -2,6 +2,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const morgan = require('morgan');
 
 // reading flag from input
 const {parseCliFlagValue} = require('./parse-cli');
@@ -16,6 +17,7 @@ const port = process.env.PORT || 5000;
 
 // middle-ware
 app.use(cors()); 
+app.use(morgan('tiny'));
 app.use(express.json()); // new express does not need bodyParser
 
 // Mongoose
@@ -29,8 +31,10 @@ const doctorsRouter = require('./routes/doctors');
 // const shopRouter = require('./routes/shop');
 const bookingRouter = require('./routes/bookings');
 const villagerRouter = require('./routes/villagers');
+const homeRouter = require('./routes/home');
 
 // Using routes
+app.use('/', homeRouter);
 app.use('/villagers', villagerRouter);
 app.use('/bookings', bookingRouter);
 app.use('/doctor', doctorsRouter);

@@ -1,18 +1,17 @@
 import http from "../http-common";
 
-const BookingService = () => {
-  const signUpVillager = villagerSignUpInfo => {
-    return http.post('villagers/addnewvillager', data)
+class VillagerDataService {
+  signUpVillager(villagerSignUpInfo) {
+    return http.post('/villagers/addnewvillager', villagerSignUpInfo);
   }
   
-  
-  const getAll = (page = 0) => {
+  getAll(page = 0){
     return http.get(`/villagers/show?page=${page}`);
   }
 
-  const createBooking = (data) => {
+  createBooking(data){
     return http.post('/villagers/new', data);
   }
-}
+};
 
-export default BookingService;
+export default VillagerDataService;
