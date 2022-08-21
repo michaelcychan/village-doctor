@@ -6,6 +6,17 @@ The project aims to build a frontend and a backend website for a imaginary villa
 
 The Frontend folder includes the frontend of the web application while the Backend folder includes the backend of the web application.  
 
+## Tech invovled:
+### Frontend
+[React](https://reactjs.org/) - Frontend frameworkd
+[bootstrap](https://getbootstrap.com/) - Styling 
+
+### Backend
+[MongoDB](https://www.mongodb.com/) - Database
+[Node.js](https://nodejs.org/en/) - Javascript Runtime
+[Express](https://expressjs.com/) - Web server framework for Node.js
+
+
 References:  
 https://www.youtube.com/watch?v=7CqJlxBYj-M  
 https://www.youtube.com/watch?v=mrHNSanmqQ4  

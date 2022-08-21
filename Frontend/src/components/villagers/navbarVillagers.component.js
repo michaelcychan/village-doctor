@@ -20,7 +20,7 @@ const NavbarVillager = () => {
               <NavLink to={"booking"} className="nav-link">Booking</NavLink>
             </li>
             <li className='navbar-item'>
-              <NavLink to={"log-up"} className="nav-link">Log-In</NavLink>
+              <NavLink to={"log-in"} className="nav-link">Log-In</NavLink>
             </li>
             <li className='navbar-item'>
               <NavLink to={"sign-up"} className="nav-link">Sign Up</NavLink>

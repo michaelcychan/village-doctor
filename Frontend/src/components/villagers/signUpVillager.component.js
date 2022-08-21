@@ -3,36 +3,37 @@ import React, {useState} from 'react';
 const SignUpVillager = (props) => {
 
   // create variable
-  const [villagerPigeonMail, setVillagerPigeonMail] = useState(null);
-  const [name, setName] = useState(null);
-  const [password, setPassword] = useState(null);
-  const [dob, setDob] = useState(null);
+  const initialSignUpInfo = {
+    villagerPigeonMail: "",
+    password: "",
+    name: "",
+    dob: ""
+  };
 
-  const onChangeVillagerPigeonMail = e => {
-    setVillagerPigeonMail(e.target.value);
+  const [villagerSignUpInfo, setVillagerSignUpInfo] = useState(initialSignUpInfo);
+
+  const handleInputChange = event => {
+    const {name, value} = event.target;
+    setVillagerSignUpInfo({...villagerSignUpInfo, [name]: value});
+  };
+
+
+  const dataSubmission = {
+    method: 'POST',
+    body: JSON.stringify(villagerSignUpInfo)
+  };
+  
+  const signUp = () => {
+    return fetch
   }
 
-  const onChangeName = e => {
-    setName(e.target.value);
-  }
 
-  const onChangePassword = e => {
-    setPassword(e.target.value);
-  }
-
-  const onChangeDob = e => {
-    setDob(e.target.value);
-  }
 
   const onSubmit = (e) => {
+    
+
     e.preventDefault();
-    const newVillager = {
-      villagerPigeonMail: villagerPigeonMail,
-      name: name,
-      password: password,
-      dob: dob
-    }
-    console.log(newVillager);
+    console.log(villagerSignUpInfo);
   }
 
   return(
@@ -43,19 +44,51 @@ const SignUpVillager = (props) => {
       <form onSubmit={onSubmit}>
       <div className='form-group'>
           <label htmlFor="villagerPigeonMail">Your Pigeon Mail:</label>
-          <input required className="form-control" type="text" id="villagerPigeonMail" name="villagerPigeonMail" />
+          <input
+            required
+            className="form-control"
+            type="email"
+            id="villagerPigeonMail"
+            name="villagerPigeonMail"
+            value={villagerSignUpInfo.villagerPigeonMail}
+            onChange={handleInputChange}
+          />
         </div>
         <div className='form-group'>
           <label htmlFor="name">Your name:</label>
-          <input required className="form-control" type="text" id="name" name="name" />
+          <input
+            required
+            className="form-control"
+            type="text"
+            id="name"
+            name="name"
+            value={villagerSignUpInfo.name}
+            onChange={handleInputChange}
+          />
         </div>
         <div className='form-group'>
-          <label htmlFor="passwordname">Your password:</label>
-          <input required className="form-control" type="text" id="password" name="password" />
+          <label htmlFor="password">Your password:</label>
+          <input
+            required
+            className="form-control"
+            type="password"
+            id="password"
+            name="password"
+            value={villagerSignUpInfo.password}
+            onChange={handleInputChange}
+          />
         </div>
         <div className='form-group'>
           <label htmlFor='dob'>Your Birthday:</label>
-          <input required type='date' className='form-control' id='dob' name='dob' />
+          <input
+            required
+            type='date'
+            className='form-control'
+            id='dob'
+            name='dob'
+            value={villagerSignUpInfo.dob}
+            onChange={handleInputChange}
+          />
         </div>
         <div className='form-group'>
           <input type="submit" className="btn btn-success" />

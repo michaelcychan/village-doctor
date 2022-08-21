@@ -1,13 +1,12 @@
 import React, {useState} from 'react';
 
-export const LogInVillager = (props) => {
+export const LogInVillager = props => {
   const initialVillagerState = {
     villagerPigeonMail: "",
     password: ""
   };
 
   const [villager, setVillager] = useState(initialVillagerState);
-
 
   const handleInputChange = event => {
     const {name, value} = event.target;
@@ -17,6 +16,8 @@ export const LogInVillager = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(villager);
+    props.login(villager);
+    props.history.push('/');
   }
 
   return (
