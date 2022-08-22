@@ -25,7 +25,7 @@ export const LogInVillager = props => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    props.login(villager);
+    props.login(dataSubmission);
     // props.history.push('/');
   }
 

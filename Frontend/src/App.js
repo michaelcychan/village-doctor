@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Link, BrowserRouter as Router,
   Routes,
   Route,
@@ -22,20 +22,46 @@ import Shop from './components/villagers/shop.component';
 
 const App = () => {
 
-    
   // components for different log-in
   // https://ui.dev/react-router-pass-props-to-components
-  const [villager, setVillager] = useState(null);
+  const initialVillagerState = {
+    villagerPigeonMail: "",
+    password: ""
+  };
+
+  let villagerState = initialVillagerState;
+  
+  const [villager, setVillager] = useState(initialVillagerState);
   const [doctor, setDoctor] = useState(null);
 
   const logInVillagerFunction = async (villager = null) => {
-    setVillager(villager);
-    console.log(villager);
-    setDoctor(null);
+    await setDoctor(null);
+    fetch('http://localhost:8000/villagers/log-in', villager)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        if (data === 'No such villager' || data === 'wrong password') {
+          console.log(data)
+        } else {
+          const villagerState = {
+            villagerPigeonMail: data.villagerPigeonMail,
+            name: data.name,
+            dob: data.dob
+          };
+          setVillager(villagerState);
+        }
+      })
   }
 
-  const logOutVillagerFunction = async () => {
-    setVillager(null);
+  useEffect(() => {
+    console.log(villager);
+  })
+
+  const logOutFunction = async () => {
+    console.log('log-out')
+    await setVillager(null)
+    await setDoctor(null)
   }
 
   const logInDoctorFunction = async (doctor = null) => {
@@ -43,19 +69,15 @@ const App = () => {
     setVillager(null);
   }
 
-  const logOutDoctorFunction = async () => {
-    setDoctor(null);
-  }
-
 
   return (
     <div className="container">
         <Routes>
           <Route path="/" exact element={<Homepage />} />
-          <Route path="villager" element={<VillagerPage />}>
+          <Route path="villager" element={<VillagerPage villager={villager} logout={logOutFunction}/>}>
             <Route index element={<HomeVillagers villager={villager}/>} />
             <Route path="sign-up" element={<SignUpVillager villager={villager}/>} />
-            <Route path="log-in" element={<LogInVillager login={logInVillagerFunction} />} />
+            <Route path="log-in" element={<LogInVillager login={logInVillagerFunction}  />} />
             <Route path="shop" element={<Shop villager={villager}/>} />
             <Route path="booking" element={<MakeBooking villager={villager}/>} />
           </Route>

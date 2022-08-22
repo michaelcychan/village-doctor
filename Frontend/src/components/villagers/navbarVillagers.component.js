@@ -2,7 +2,7 @@
 import React , {Component} from 'react';
 import {Link, NavLink, Outlet} from 'react-router-dom';
 
-const NavbarVillager = () => {
+const NavbarVillager = (props) => {
   return (
     <>
     <nav className="navbar navbar-success bg-success navbar-expand-md">
