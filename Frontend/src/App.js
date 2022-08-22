@@ -91,7 +91,7 @@ const App = () => {
             <Route path="booking" element={<MakeBooking villager={villager}/>} />
           </Route>
           <Route path="doctor" element={<DoctorPage doctor={doctor}  logout={logOutFunction} />}>
-            <Route index element={<HomeDoctors doctor={doctor}  logout={logOutFunction}/>} />
+            <Route index element={<HomeDoctors doctor={doctor} logout={logOutFunction}/>} />
             <Route path='log-in' element={<LogInDoctor doctor={doctor}  login={logInDoctorFunction}/>} />
             <Route path="stock" element={<ManageStock doctor={doctor} />} />
             <Route path="appointment" element={<Appointment doctor={doctor} />} />

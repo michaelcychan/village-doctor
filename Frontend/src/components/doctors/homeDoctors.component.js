@@ -5,14 +5,14 @@ import {Link} from 'react-router-dom';
 const HomeDoctors = (props) => {
   return(
     <div>
+      {(props.doctor) 
+        && <div><h2>Dear {props.doctor.docName},</h2> <p> you can now go manage your stocks or see your fellow villagers!</p></div>
+      }
       <div>
-      <h1>Dear Doctor!</h1> 
-      <h2>{props.doctor}</h2>
-      <p>After log in, you can go manage your stocks or see your fellow villagers!</p>
-    </div>
-    <div>
-      <Link to={"log-in"} className="link-success" style={{ textDecoration: 'none' }}>Log In</Link>
-    </div>
+        {(props.doctor === null)
+          && <Link to={"log-in"} className="link-danger" style={{ textDecoration: 'none' }}>Log In</Link>
+        } 
+      </div>
     </div>
     
   )
