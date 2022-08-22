@@ -3,7 +3,7 @@ import VillagerDataService from '../../services/villagers.service';
 
 const SignUpVillager = (props) => {
 
-  // create variable
+  // Initialising the submission data while page starts
   const initialSignUpInfo = {
     villagerPigeonMail: "",
     password: "",
@@ -13,11 +13,13 @@ const SignUpVillager = (props) => {
 
   const [villagerSignUpInfo, setVillagerSignUpInfo] = useState(initialSignUpInfo);
 
+  // updating submission data while user inputs
   const handleInputChange = event => {
     const {name, value} = event.target;
     setVillagerSignUpInfo({...villagerSignUpInfo, [name]: value});
   };
 
+  // creating a submission object when called
   const dataSubmission = {
     headers: {
       Accept: 'application/json',
@@ -27,15 +29,37 @@ const SignUpVillager = (props) => {
     body: JSON.stringify(villagerSignUpInfo)
   };
 
+  // creating an alert message when error on submission
+  const [httpOK, setHttpOK] = useState(false);
+  const [message, setMessage] = useState(null);
+
+  // submission button
   const onSubmit = (e) => {
+    setMessage(null);
     e.preventDefault();
-    console.log(dataSubmission);
     fetch('http://localhost:8000/villagers/addnewvillager', dataSubmission)
+      .then((response) => {
+        setHttpOK(response.ok);
+        return response.json();
+      })
+      .then((data) => {
+        console.log(httpOK)
+        if (httpOK === true) {
+          console.log(data);
+          setMessage('You registered successfully!')
+        }
+        if (httpOK === false && data.code === 11000) {
+          setMessage(`Pigeon Mail ${data.keyValue.villagerPigeonMail} has been registered`);
+        }
+      })
   }
 
   return(
     <div>
       <h1>Sign up at your most trusted Shaman Doctor!</h1>
+      { message &&
+        <div><p>{message}</p></div> 
+      }
       <p>By signing up, you can make a booking with our most trusted shamn doctor and buy from here!</p>
       <h2>Sign Up Form</h2>
       <form onSubmit={onSubmit}>

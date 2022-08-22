@@ -14,7 +14,7 @@ const villagerSchema = new Schema({
     type: String,
     required: true,
     trim: true,
-    minlength: 5
+    minlength: 3
   },
   password: {
     type: String,

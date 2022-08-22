@@ -32,7 +32,6 @@ const VillagerController = {
 
   // need to implement catch for errors
   CreateAsync: async (req, res) => {
-    console.log(req.body);
     const hashedPassword = await Bcrypt.hash(req.body.password, saltRound)
     const villager = new Villager({
       villagerPigeonMail: req.body.villagerPigeonMail,
@@ -40,8 +39,14 @@ const VillagerController = {
       password: hashedPassword, 
       dob: req.body.dob
     });
-    const result = await villager.save();
-    res.json(result);
+    try {
+      const result = await villager.save();
+      console.log(result);
+      res.json(result);
+    } catch(error) {
+      console.error(error);
+      res.status(409).json(error);
+    }
   },
 };
 
