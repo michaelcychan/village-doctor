@@ -30,6 +30,7 @@ const App = () => {
 
   const logInVillagerFunction = async (villager = null) => {
     setVillager(villager);
+    console.log(villager);
     setDoctor(null);
   }
 

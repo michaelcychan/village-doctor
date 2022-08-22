@@ -11,6 +11,7 @@ const VillagerController = {
       .catch(error => res.status(400).json('Bad prayer request unanswered: ' + error));
   },
 
+  // using promises
   Create: (req, res) => {
     Bcrypt.hash(req.body.password, saltRound, (error, hashedPassword) => {
       const villager = new Villager({
@@ -48,6 +49,27 @@ const VillagerController = {
       res.status(409).json(error);
     }
   },
+
+  // Log-in function
+  LogInVillager: async (req, res) => {
+    console.log('trying to login');
+    try {
+      const resultVillager = await Villager.findOne({villagerPigeonMail: req.body.villagerPigeonMail});
+      if (!resultVillager) {
+        res.status(400).json('No such villager')
+      }
+      if (resultVillager) {
+        const passwordMatched = await Bcrypt.compare(req.body.password, resultVillager.password)
+        if (passwordMatched) {
+          res.json(resultVillager)
+        } else {
+          res.status(400).json('wrong password')
+        }
+      }
+    } catch(error) {
+      console.error(error);
+    }
+  }
 };
 
 module.exports = VillagerController;

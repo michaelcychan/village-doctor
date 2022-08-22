@@ -13,11 +13,20 @@ export const LogInVillager = props => {
     setVillager({...villager, [name]: value});
   };
 
+  // creating a submission object
+  const dataSubmission = {
+    headers: {
+      Accept: 'application/json',
+      "Content-type": "application/json"
+    },
+    method: 'POST',
+    body: JSON.stringify(villager)
+  }
+
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(villager);
     props.login(villager);
-    props.history.push('/');
+    // props.history.push('/');
   }
 
   return (
