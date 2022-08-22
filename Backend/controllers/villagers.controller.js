@@ -11,26 +11,6 @@ const VillagerController = {
       .catch(error => res.status(400).json('Bad prayer request unanswered: ' + error));
   },
 
-  // using promises
-  Create: (req, res) => {
-    Bcrypt.hash(req.body.password, saltRound, (error, hashedPassword) => {
-      const villager = new Villager({
-        villagerPigeonMail: req.body.villagerPigeonMail,
-        name: req.body.name,
-        password: hashedPassword,
-        dob: dob
-      });
-      villager.save((error, result) => {
-        if (error) {
-          console.log(error);
-          res.status(409).render('/new');
-        } else {
-            res.json('Villager added!')
-        }
-      })
-    });
-  },
-
   // need to implement catch for errors
   CreateAsync: async (req, res) => {
     const hashedPassword = await Bcrypt.hash(req.body.password, saltRound)
@@ -63,7 +43,7 @@ const VillagerController = {
         if (passwordMatched) {
           res.json(resultVillager)
         } else {
-          res.status(400).json('wrong password')
+          res.status(401).json('wrong password')
         }
       }
     } catch(error) {

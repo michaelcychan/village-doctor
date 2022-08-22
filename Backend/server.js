@@ -37,7 +37,7 @@ const homeRouter = require('./routes/home');
 app.use('/', homeRouter);
 app.use('/villagers', villagerRouter);
 app.use('/bookings', bookingRouter);
-app.use('/doctor', doctorsRouter);
+app.use('/doctors', doctorsRouter);
 // app.use('/shop', shopRouter);
 
 // when leading to a non-existing route

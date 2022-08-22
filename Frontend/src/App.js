@@ -54,21 +54,30 @@ const App = () => {
       })
   }
 
-  useEffect(() => {
-    console.log(villager);
-  })
-
   const logOutFunction = async () => {
-    console.log('log-out')
+    console.log('log out')
     await setVillager(null)
     await setDoctor(null)
   }
 
   const logInDoctorFunction = async (doctor = null) => {
-    setDoctor(doctor);
-    setVillager(null);
+    await setVillager(null);
+    fetch('http://localhost:8000/doctors/log-in', doctor)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        if (data === 'No such doctor' || data === 'wrong password') {
+          console.log(data)
+        } else {
+          const doctorState = {
+            docName: data.docName,
+            docLogin: data.Login,
+          };
+          setDoctor(doctorState);
+        }
+      })
   }
-
 
   return (
     <div className="container">
@@ -77,13 +86,13 @@ const App = () => {
           <Route path="villager" element={<VillagerPage villager={villager} logout={logOutFunction}/>}>
             <Route index element={<HomeVillagers villager={villager}/>} />
             <Route path="sign-up" element={<SignUpVillager villager={villager}/>} />
-            <Route path="log-in" element={<LogInVillager login={logInVillagerFunction}  />} />
+            <Route path="log-in" element={<LogInVillager villager={villager} login={logInVillagerFunction}  />} />
             <Route path="shop" element={<Shop villager={villager}/>} />
             <Route path="booking" element={<MakeBooking villager={villager}/>} />
           </Route>
-          <Route path="doctor" element={<DoctorPage/>}>
-            <Route index element={<HomeDoctors doctor={'Eagle Head'} />} />
-            <Route path='log-in' element={<LogInDoctor login={logInDoctorFunction}/>} />
+          <Route path="doctor" element={<DoctorPage doctor={doctor}  logout={logOutFunction} />}>
+            <Route index element={<HomeDoctors doctor={doctor}  logout={logOutFunction}/>} />
+            <Route path='log-in' element={<LogInDoctor doctor={doctor}  login={logInDoctorFunction}/>} />
             <Route path="stock" element={<ManageStock doctor={doctor} />} />
             <Route path="appointment" element={<Appointment doctor={doctor} />} />
           </Route>

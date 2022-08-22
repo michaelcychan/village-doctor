@@ -13,9 +13,19 @@ export const LogInDoctor = (props) => {
     setDoctor({...doctor, [name]: value});
   };
 
+  // creating a submission object
+  const dataSubmission = {
+    headers: {
+      Accept: 'application/json',
+      "Content-type": "application/json"
+    },
+    method: 'POST',
+    body: JSON.stringify(doctor)
+  }
+
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(doctor);
+    props.login(dataSubmission)
   }
 
   return (
@@ -39,7 +49,7 @@ export const LogInDoctor = (props) => {
           <input
             required
             className="form-control"
-            type="text"
+            type="password"
             id="password"
             name="password"
             value={doctor.password}
@@ -47,7 +57,7 @@ export const LogInDoctor = (props) => {
           />
         </div>
         <div className='form-group'>
-          <input type="submit" className="btn btn-success" />
+          <input type="submit" className="btn btn-danger" />
         </div>
       </form>
     </div>

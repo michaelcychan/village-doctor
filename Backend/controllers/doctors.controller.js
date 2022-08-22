@@ -14,7 +14,6 @@ const DoctorController = {
   },
 
   CreateDoctor: (req, res) => {
-    console.log(req.body);
     bcrypt.hash(req.body.password, saltRound, (error, hashedPassword) => {
       const doctor = new Doctor({
         docLogin: req.body.docLogin,
@@ -33,6 +32,7 @@ const DoctorController = {
     });
   },
 
+  // log-in function
   LogInDoctor: (req, res) => {
     console.log('trying to log in');
     const docLogin = req.body.docLogin;
@@ -44,7 +44,7 @@ const DoctorController = {
         } else {
           bcrypt.compare(inputPassword, doctor.password, (error, hashComparison) => {
             if (!hashComparison) {
-              res.status(401).json('Unauthorised access')
+              res.status(401).json('wrong password')
             } else {
               res.json({
                 docName: doctor.docName,
