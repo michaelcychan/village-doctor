@@ -1,7 +1,7 @@
 import http from "../http-common";
 
 class VillagerDataService {
-  signUpVillager(villagerSignUpInfo) {
+  static signUpVillager(villagerSignUpInfo) {
     return http.post('/villagers/addnewvillager', villagerSignUpInfo);
   }
   
