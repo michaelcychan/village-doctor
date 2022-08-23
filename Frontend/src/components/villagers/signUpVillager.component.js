@@ -19,39 +19,25 @@ const SignUpVillager = (props) => {
     setVillagerSignUpInfo({...villagerSignUpInfo, [name]: value});
   };
 
-  // creating a submission object when called
-  const dataSubmission = {
-    headers: {
-      Accept: 'application/json',
-      "Content-type": "application/json"
-    },
-    method: 'POST',
-    body: JSON.stringify(villagerSignUpInfo)
-  };
-
   // creating an alert message when error on submission
   const [httpOK, setHttpOK] = useState(false);
   const [message, setMessage] = useState(null);
 
   // submission button
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     setMessage(null);
     e.preventDefault();
-    fetch('http://localhost:8000/villagers/addnewvillager', dataSubmission)
-      .then((response) => {
-        setHttpOK(response.ok);
-        return response.json();
-      })
-      .then((data) => {
-        console.log(httpOK)
-        if (httpOK === true) {
-          console.log(data);
-          setMessage('You registered successfully!')
-        }
-        if (httpOK === false && data.code === 11000) {
-          setMessage(`Pigeon Mail ${data.keyValue.villagerPigeonMail} has been registered`);
-        }
-      })
+    try {
+      const response = await VillagerDataService.signUpVillager(villagerSignUpInfo);
+      setMessage(`You signed up successfully with ${response.data.villagerPigeonMail}`);
+    } catch(error) {
+      console.error(error);
+      if (error.response.data.code == 11000) {
+        setMessage(`Pigeon Mail ${error.response.data.keyValue.villagerPigeonMail} has been registered`)
+      } else {
+        setMessage('Some Errors!')
+      }
+    }
   }
 
   return(
