@@ -1,4 +1,5 @@
-import React, {Component, useState} from 'react';
+import React, {Component, useEffect, useState} from 'react';
+import DoctorDataService from '../../services/doctors.service';
 
 const CreateStock = (props) => {
   const initialStockState ={
@@ -18,17 +19,21 @@ const CreateStock = (props) => {
     setNewStock({...newStock, [name]: value});
   };
 
-  const onSubmit = e => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     console.log(newStock);
+    try {
+      const response = await DoctorDataService.createNewStock(newStock);
+      console.log(response.data.productName);
+    } catch(error) {
+      console.error(error);
+    }
   }
-
 
   return(
     <div className='page-container'>
       <h1>Add new Stock</h1>
       <form onSubmit={onSubmit}>
-        
         <div className='form-group'>
           <label htmlFor='productName'>Product Name:</label>
           <input
@@ -37,6 +42,8 @@ const CreateStock = (props) => {
             type='text'
             id='productName'
             name='productName'
+            value={newStock.productName}
+            onChange={handleInputChange}
           />
         </div>
         <div className='form-group'>
@@ -47,6 +54,8 @@ const CreateStock = (props) => {
             type='number'
             id='price'
             name='price'
+            value={newStock.price}
+            onChange={handleInputChange}
           />
         </div>
         <div className='form-group'>
@@ -56,6 +65,8 @@ const CreateStock = (props) => {
             className='form-control'
             id='description'
             name='description'
+            value={newStock.description}
+            onChange={handleInputChange}
           />
         </div>
         <div className='form-group'>
@@ -65,6 +76,8 @@ const CreateStock = (props) => {
             className='form-control'
             id='category'
             name='category'
+            value={newStock.category}
+            onChange={handleInputChange}
           >
             { categories.map(cat => <option value="{cat}">{cat}</option>) }
           </select>

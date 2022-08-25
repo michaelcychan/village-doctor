@@ -12,6 +12,10 @@ class DoctorDataService {
   static logInDoctor(data) {
     return http.post('/doctors/log-in', data)
   }
+
+  static createNewStock(data) {
+    return http.post('/store/add-item', data)
+  }
 }
 
 export default DoctorDataService;

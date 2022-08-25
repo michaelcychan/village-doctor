@@ -28,7 +28,7 @@ mongoose.connect(uri, { useNewUrlParser: true })
 
 // declaring routes
 const doctorsRouter = require('./routes/doctors');
-// const shopRouter = require('./routes/shop');
+const storeRouter = require('./routes/store');
 const bookingRouter = require('./routes/bookings');
 const villagerRouter = require('./routes/villagers');
 const homeRouter = require('./routes/home');
@@ -38,7 +38,7 @@ app.use('/', homeRouter);
 app.use('/villagers', villagerRouter);
 app.use('/bookings', bookingRouter);
 app.use('/doctors', doctorsRouter);
-// app.use('/shop', shopRouter);
+app.use('/store', storeRouter);
 
 // when leading to a non-existing route
 app.use('*', (req, res) => res.status(404).json({ error: "Healing Spirit is not found here. Return, my friend." }))
