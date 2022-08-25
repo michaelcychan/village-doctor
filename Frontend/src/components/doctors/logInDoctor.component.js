@@ -32,7 +32,7 @@ export const LogInDoctor = (props) => {
     <div className='page-container'>
       <h1>Doctor Log in page</h1>
       <form onSubmit={onSubmit}>
-      <div className='form-group'>
+        <div className='form-group'>
           <label htmlFor="docLogin">Your Doctor Login:</label>
           <input
             required

@@ -1,9 +1,16 @@
-// eslint-disable-next-line
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
-const ManageStock = () => {
+const ManageStock = (props) => {
   return(
-    <div> <p>Manage Stock</p> </div>
+    <>
+      <div className='container navbar-collapse'>
+        <h2>Manage Stock</h2>
+        <p> 
+        <Link to={"../create"} className="nav-link">Add new item</Link>
+        </p>
+      </div>
+    </>
   )
 }
 

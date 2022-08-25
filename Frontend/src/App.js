@@ -14,6 +14,7 @@ import DoctorPage from './components/doctors/doctor.component';
 import HomeDoctors from './components/doctors/homeDoctors.component';
 import LogInDoctor from './components/doctors/logInDoctor.component';
 import ManageStock from './components/doctors/manageStock.component';
+import CreateStock from './components/doctors/createStock.component';
 import Appointment from './components/doctors/appointment.component';
 import VillagerPage from './components/villagers/villagers.component';
 import HomeVillagers from './components/villagers/homeVillagers.component';
@@ -93,7 +94,10 @@ const App = () => {
           <Route path="doctor" element={<DoctorPage doctor={doctor}  logout={logOutFunction} />}>
             <Route index element={<HomeDoctors doctor={doctor} logout={logOutFunction}/>} />
             <Route path='log-in' element={<LogInDoctor doctor={doctor}  login={logInDoctorFunction}/>} />
-            <Route path="stock" element={<ManageStock doctor={doctor} />} />
+            <Route path="stock">
+              <Route path="manage" element={<ManageStock doctor={doctor} />} />
+              <Route path="create" element={<CreateStock doctor={doctor} />} />
+            </Route>
             <Route path="appointment" element={<Appointment doctor={doctor} />} />
           </Route>
         </Routes>
