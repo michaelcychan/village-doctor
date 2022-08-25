@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle';
 
 import VillagerDataService from './services/villagers.service';
+import DoctorDataService from './services/doctors.service';
 
 // importing different pages
 import Homepage from './components/homepage.component';
@@ -31,10 +32,12 @@ const App = () => {
     villagerPigeonMail: "",
     password: ""
   };
-
-  let villagerState = initialVillagerState;
-  
   const [villager, setVillager] = useState(initialVillagerState);
+
+  const initialDoctorState = {
+    docLogin: "",
+    password: ""
+  };
   const [doctor, setDoctor] = useState(null);
 
   const [error, setError] = useState(null);
@@ -63,21 +66,17 @@ const App = () => {
 
   const logInDoctorFunction = async (doctor = null) => {
     await setVillager(null);
-    fetch('http://localhost:8000/doctors/log-in', doctor)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        if (data === 'No such doctor' || data === 'wrong password') {
-          console.log(data)
-        } else {
-          const doctorState = {
-            docName: data.docName,
-            docLogin: data.Login,
-          };
-          setDoctor(doctorState);
-        }
-      })
+    try {
+      const response = await DoctorDataService.logInDoctor(doctor);
+      const doctorState = {
+        docName: response.data.docName,
+        docLogin: response.data.docLogin,
+      };
+      setDoctor(doctorState); 
+    } catch(error) {
+      console.error(error)
+      setError(error)
+    }
   }
 
   return (

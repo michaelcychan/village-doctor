@@ -1,17 +1,17 @@
 import http from "../http-common";
 
-const DoctorService = () => {
-  const getAllStock = (page = 0) => {
+class DoctorDataService {
+  static getAllStock = (page = 0) => {
     return http.get(`/doctor/show?page=${page}`);
   }
 
-  const createBooking = (data) => {
+  static createBooking = (data) => {
     return http.post('/doctors/new', data);
   }
 
-  const logIn = data => {
-    return http.post('/doctors/new', data)
+  static logInDoctor(data) {
+    return http.post('/doctors/log-in', data)
   }
 }
 
-export default DoctorService;
+export default DoctorDataService;
