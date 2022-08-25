@@ -7,12 +7,6 @@ const bcrypt = require('bcrypt');
 const saltRound = 5;
 
 const DoctorController = {
-  Index: (req, res) => {
-    Doctor.find()
-      .then(doctors => res.json(doctors))
-      .catch(error => res.status(400).json('Doctor not found: ' + error));
-  },
-
   CreateDoctor: (req, res) => {
     bcrypt.hash(req.body.password, saltRound, (error, hashedPassword) => {
       const doctor = new Doctor({

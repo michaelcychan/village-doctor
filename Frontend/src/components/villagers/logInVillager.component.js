@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 export const LogInVillager = props => {
   const initialVillagerState = {
@@ -13,21 +13,11 @@ export const LogInVillager = props => {
     setVillager({...villager, [name]: value});
   };
 
-  // creating a submission object
-  const dataSubmission = {
-    headers: {
-      Accept: 'application/json',
-      "Content-type": "application/json"
-    },
-    method: 'POST',
-    body: JSON.stringify(villager)
-  }
-
   const onSubmit = (e) => {
     e.preventDefault();
-    props.login(dataSubmission);
-    // props.history.push('/');
+    props.login(villager);
   }
+ 
 
   return (
     <div className='page-container'>

@@ -14,7 +14,7 @@ const NavbarDoctor = () => {
           <div className="navbar-collapse collapse" id="collapsingNavbarDoctor"> 
             <ul className="mx-auto w-70 navbar-nav justify-content-center">
               <li className='navbar-item'>
-                <Link to={"stock"} className="nav-link">Stock Management</Link>
+                <Link to={"stock/manage"} className="nav-link">Stock Management</Link>
               </li>
               <li className='navbar-item'>
                 <Link to={"appointment"} className="nav-link">Appointment</Link>

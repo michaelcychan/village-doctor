@@ -13,26 +13,16 @@ export const LogInDoctor = (props) => {
     setDoctor({...doctor, [name]: value});
   };
 
-  // creating a submission object
-  const dataSubmission = {
-    headers: {
-      Accept: 'application/json',
-      "Content-type": "application/json"
-    },
-    method: 'POST',
-    body: JSON.stringify(doctor)
-  }
-
   const onSubmit = (e) => {
     e.preventDefault();
-    props.login(dataSubmission)
+    props.login(doctor)
   }
 
   return (
     <div className='page-container'>
       <h1>Doctor Log in page</h1>
       <form onSubmit={onSubmit}>
-      <div className='form-group'>
+        <div className='form-group'>
           <label htmlFor="docLogin">Your Doctor Login:</label>
           <input
             required

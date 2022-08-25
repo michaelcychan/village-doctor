@@ -14,7 +14,6 @@ const HomeDoctors = (props) => {
         } 
       </div>
     </div>
-    
   )
 }
 
