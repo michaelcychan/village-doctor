@@ -25,10 +25,13 @@ const CreateStock = (props) => {
     try {
       const response = await DoctorDataService.createNewStock(newStock);
       console.log(response.data.productName);
+      setNewStock(initialStockState);
     } catch(error) {
       console.error(error);
     }
   }
+
+  // Tag component: https://dev.to/0shuvo0/lets-create-an-add-tags-input-with-react-js-d29
 
   return(
     <div className='page-container'>
@@ -79,7 +82,8 @@ const CreateStock = (props) => {
             value={newStock.category}
             onChange={handleInputChange}
           >
-            { categories.map(cat => <option value="{cat}">{cat}</option>) }
+            <option value="" disabled={true}>Please select one</option>
+            { categories.map(cat => <option value={cat}>{cat}</option>) }
           </select>
         </div>
         <div className='form-group'>

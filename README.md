@@ -42,12 +42,12 @@ sudo service mongodb start
 
 To test MongoDB status:
 ```
-sudo service postgresql status
+sudo service mongodb status
 ```
 
 To shut down MongoDB:
 ```
-sudo service postgresql stop
+sudo service mongodb stop
 ```
 
 To start the server in testing environment:
