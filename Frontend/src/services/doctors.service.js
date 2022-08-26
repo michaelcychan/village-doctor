@@ -1,21 +1,23 @@
 import http from "../http-common";
 
 class DoctorDataService {
-  static getAllStock = (page = 0) => {
-    return http.get(`/doctor/show?page=${page}`);
+  static logInDoctor(data) {
+    return http.post('/doctors/log-in', data)
   }
 
   static createBooking = (data) => {
     return http.post('/doctors/new', data);
   }
 
-  static logInDoctor(data) {
-    return http.post('/doctors/log-in', data)
-  }
-
+  // Stock management functions 
   static createNewStock(data) {
     return http.post('/store/add-item', data)
   }
+
+  static getAllStock = (page = 1) => {
+    return http.get(`/store/managestock?page=${page}`);
+  }
+
 }
 
 export default DoctorDataService;
