@@ -15,7 +15,6 @@ const StoreController = {
 
   //create new item
   CreateNewItem: async (req, res) => {
-    console.log(req.body)
     const newProduct = new Product(req.body);
     try {
       const result = await newProduct.save();
@@ -28,6 +27,20 @@ const StoreController = {
       res.status(409).json(error);
     }
   },
+
+  UpdateItem: async (req, res) => {
+    Product.findOneAndUpdate
+  },
+
+  DeleteItem: async (req, res) => {
+    try {
+      const result = await Product.findOneAndDelete({"productName": req.params.productName});
+      res.json(`Item ${result.productName} has been deleted`)
+    } catch(error) {
+      console.error(error);
+      res.status(409).json(error);
+    }
+  }
 };
 
 module.exports = StoreController;

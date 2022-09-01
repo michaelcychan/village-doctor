@@ -18,6 +18,10 @@ class DoctorDataService {
     return http.get(`/store/managestock?page=${page}`);
   }
 
+  static deleteStock(productName) {
+    return http.delete(`/store/deletestock/${productName}`);
+  }
+
 }
 
 export default DoctorDataService;

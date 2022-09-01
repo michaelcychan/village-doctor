@@ -5,13 +5,25 @@ import DoctorDataService from '../../services/doctors.service';
 const ManageStock = (props) => {
   const [stockArray, setStockArray] = useState([]);
 
+  const fetchAllStock = async () => {
+    const {data: stocks } = await DoctorDataService.getAllStock();
+    setStockArray(stocks);
+  }
+
   useEffect(() => {
-    const fetchAllStock = async () => {
-      const {data: stocks } = await DoctorDataService.getAllStock();
-      setStockArray(stocks);
-    }
     fetchAllStock();
   }, []) // [] means it only runs on first render
+
+  const deleteButton = async (productName) => {
+    console.log(`You have pressed the delete button. productName is ${productName}`)
+    try {
+      const response = await DoctorDataService.deleteStock(productName)
+      console.log(response.data);
+      await fetchAllStock();
+    } catch(error) {
+      console.error(error);
+    }
+  }
 
   return(
     <>
@@ -29,6 +41,7 @@ const ManageStock = (props) => {
               <th scope="col">Description</th>
               <th scope="col">Category</th>
               <th scope="col">Stock</th>
+              <th scope="col">Manage</th>
             </tr>
           </thead>
           <tbody>
@@ -40,6 +53,7 @@ const ManageStock = (props) => {
               <td>{stock.description}</td>
               <td>{stock.category}</td>
               <td>{stock.stockNumber}</td>
+              <td><button id={stock.productName}>✍️</button><button id={stock.productName} onClick={() => deleteButton(stock.productName)}>🗑️</button></td>
             </tr>
             )}
           </tbody>
