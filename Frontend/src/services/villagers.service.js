@@ -8,6 +8,10 @@ class VillagerDataService {
   static logInVillager(villagerLogInInfo) {
     return http.post('/villagers/log-in', villagerLogInInfo);
   }
+
+  static getAllStock = (page = 1) => {
+    return http.get(`/store/view?page=${page}`);
+  }
   
   getAll(page = 0){
     return http.get(`/villagers/show?page=${page}`);

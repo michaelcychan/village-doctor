@@ -15,14 +15,8 @@ const StoreController = {
 
   //create new item
   CreateNewItem: async (req, res) => {
-    const newProduct = new Product({
-      productName: req.body.productName,
-      price: req.body.price,
-      description: req.body.description,
-      imageUri: req.body.imageUri,
-      category: req.body.category,
-      tag: req.body.tag
-    });
+    console.log(req.body)
+    const newProduct = new Product(req.body);
     try {
       const result = await newProduct.save();
       res.json({

@@ -5,6 +5,7 @@ const CreateStock = (props) => {
   const initialStockState ={
     productName: "",
     price: 0,
+    stockNumber: 0,
     description: "",
     category: "",
     tag: []
@@ -21,7 +22,6 @@ const CreateStock = (props) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(newStock);
     try {
       const response = await DoctorDataService.createNewStock(newStock);
       console.log(response.data.productName);
@@ -85,6 +85,18 @@ const CreateStock = (props) => {
             <option value="" disabled={true}>Please select one</option>
             { categories.map(cat => <option value={cat}>{cat}</option>) }
           </select>
+        </div>
+        <div className='form-group'>
+          <label htmlFor='stockNumber'>Stock:</label>
+          <input
+            required
+            className='form-control'
+            type='number'
+            id='stockNumber'
+            name='stockNumber'
+            value={newStock.stockNumber}
+            onChange={handleInputChange}
+          />
         </div>
         <div className='form-group'>
           <input type="submit" className="btn btn-danger" />

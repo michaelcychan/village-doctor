@@ -28,6 +28,7 @@ const ManageStock = (props) => {
               <th scope="col">Price</th>
               <th scope="col">Description</th>
               <th scope="col">Category</th>
+              <th scope="col">Stock</th>
             </tr>
           </thead>
           <tbody>
@@ -38,6 +39,7 @@ const ManageStock = (props) => {
               <td>{stock.price}</td>
               <td>{stock.description}</td>
               <td>{stock.category}</td>
+              <td>{stock.stockNumber}</td>
             </tr>
             )}
           </tbody>

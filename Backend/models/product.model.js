@@ -27,6 +27,10 @@ const productSchema = new Schema({
   //  each product can have multiple tag
   tag: {
     type: Array
+  },
+  stockNumber: {
+    type: Number,
+    required: true
   }
 });
 
