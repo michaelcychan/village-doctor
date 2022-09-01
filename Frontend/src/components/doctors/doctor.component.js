@@ -10,10 +10,12 @@ const DoctorPage = (props) => {
       <NavbarDoctor />
       <div>
         <p>Doctor Component Home</p>
-        {(props.doctor) && <p>Welcome back, Shaman {props.doctor.docName}!</p>}
+        {(props.doctor) 
+          && <div><p>Welcome back, Shaman {props.doctor.docName}!</p>
+          <button onClick={props.logout} className="btn btn-danger" >Log out</button>
+          </div>
+          }
       </div>
-      <button onClick={props.logout} className="btn btn-danger" >Log out</button>
-        
     </>
   )
 }

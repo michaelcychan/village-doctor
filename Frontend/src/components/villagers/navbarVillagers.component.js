@@ -5,6 +5,7 @@ import {Link, NavLink, Outlet} from 'react-router-dom';
 const NavbarVillager = (props) => {
   return (
     <>
+    
     <nav className="navbar navbar-success bg-success navbar-expand-md">
       <div className="container navbar-collapse">
         <Link to={""} className="nav-link">Villager Home</Link>

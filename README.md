@@ -6,7 +6,73 @@ The project aims to build a frontend and a backend website for a imaginary villa
 
 The Frontend folder includes the frontend of the web application while the Backend folder includes the backend of the web application.  
 
-## Tech invovled:
+## User Stories
+
+### Villagers
+As a villager,  
+so that I can log-in the website,  
+I want to sign up.  
+
+As a villager,  
+so that I can use the clinic service,  
+I want to log in.  
+
+As a villager,
+so that my data is protected,  
+I want my password to be hashed.  
+
+As a villager,
+so that I can see doctor,  
+I want to make a booking with doctor with my chosen date.  
+
+As a villager,
+so that I can browse store,  
+I want to be able to view available items(stock > 0).  
+
+As a villager,
+so that I can buy from store,  
+I want to add items to shopping cart.  
+
+### Doctors
+As a doctor,  
+so that I can use the website,  
+I want to log in.  
+
+As a doctor,  
+so that people cannot regsiter as doctor,  
+I want doctor sign-up can only be done by adminstrators / through back-end.  
+
+As a doctor,
+so that my data is protected,  
+I want my password to be hashed.  
+
+As a doctor,
+so that I can make record upon seeing villagers,  
+I want to write doctor's note for each appointment.  
+
+As a doctor,  
+so that I can understand the villager,  
+I want to view all previous records of a particular villager.  
+
+As a doctor,  
+so that I can sell stocks,  
+I want to add stock items to store.  
+
+As a doctor,  
+so that I can refill stocks or amend stock description,  
+I want to edit information of existing stocks.  
+
+As a doctor,  
+so that the web functions are protected,  
+I want they are only available when doctors have logged in
+
+## Tech
+My approach is to build a front end web service which is separated from a back end web service, so that I can scale up either end, or even replace one side with another programming langauge. That is why the domain address of backend server is not hardcoded, but was saved in a separate file `http-common.js`, which allows easy redirection.    
+
+The Front end application is divided into two halves, the doctors' side and the villagers' side, the functions are completely different but they get data from the same database. The back end server, therefore, is also divided into two havles. Theoretically, these parts can be migrated completely to another server if there is such need. Enhancement or feature change can be brought about without bringing the whole service down.  
+
+The heart of the whole application is the database. While in the testing environment, a local MongoDB is used, however, it can be migrated to MongoDB Atlas easily, which allows more flexibility.  
+
 ### Frontend
 [React](https://reactjs.org/) - Frontend framework  
 [bootstrap](https://getbootstrap.com/) - Styling  
@@ -16,6 +82,9 @@ The Frontend folder includes the frontend of the web application while the Backe
 [Node.js](https://nodejs.org/en/) - Javascript Runtime  
 [Express](https://expressjs.com/) - Web server framework for Node.js  
 
+### Other tools
+[Postman](https://www.postman.com/) - API testing tool for backend  
+[TablePlus](https://tableplus.com/) - GUI tool for database  
 
 References:  
 https://www.youtube.com/watch?v=7CqJlxBYj-M  

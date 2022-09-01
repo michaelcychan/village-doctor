@@ -10,9 +10,14 @@ const ManageStock = (props) => {
     setStockArray(stocks);
   }
 
+  // getting stocks at page loading
   useEffect(() => {
     fetchAllStock();
   }, []) // [] means it only runs on first render
+
+  const editButton = (productName) => {
+    console.log(`productName: ${productName}`);
+  }
 
   const deleteButton = async (productName) => {
     console.log(`You have pressed the delete button. productName is ${productName}`)
@@ -53,7 +58,7 @@ const ManageStock = (props) => {
               <td>{stock.description}</td>
               <td>{stock.category}</td>
               <td>{stock.stockNumber}</td>
-              <td><button id={stock.productName}>✍️</button><button id={stock.productName} onClick={() => deleteButton(stock.productName)}>🗑️</button></td>
+              <td><button onClick={() => editButton(stock.productName)}>✍️</button><button onClick={() => deleteButton(stock.productName)}>🗑️</button></td>
             </tr>
             )}
           </tbody>
