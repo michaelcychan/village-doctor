@@ -1,8 +1,9 @@
 import React, {Component, useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import DoctorDataService from '../../services/doctors.service';
 
 const ManageStock = (props) => {
+  const navigate = useNavigate();
   const [stockArray, setStockArray] = useState([]);
 
   const fetchAllStock = async () => {
@@ -16,14 +17,19 @@ const ManageStock = (props) => {
   }, []) // [] means it only runs on first render
 
   const editButton = (productName) => {
-    console.log(`productName: ${productName}`);
+    console.log(`Edit button productName: ${productName}`);
+    navigate("../edit", {
+      state: {
+        productName: `${productName}`
+      }
+    })
   }
+  // reference: https://programmingfields.com/redirect-to-component-with-props-using-usenavigate-hook/
 
   const deleteButton = async (productName) => {
     console.log(`You have pressed the delete button. productName is ${productName}`)
     try {
       const response = await DoctorDataService.deleteStock(productName)
-      console.log(response.data);
       await fetchAllStock();
     } catch(error) {
       console.error(error);

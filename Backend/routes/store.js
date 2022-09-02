@@ -6,5 +6,6 @@ router.get('/managestock', StoreController.ViewAllItems);
 router.get('/view', StoreController.ViewAllItems);
 router.put('/managestock', StoreController.UpdateItem);
 router.delete('/deletestock/:productName', StoreController.DeleteItem);
+router.get('/:productName', StoreController.ViewOneItem);
 
 module.exports = router;

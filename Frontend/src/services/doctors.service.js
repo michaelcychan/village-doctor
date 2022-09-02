@@ -22,6 +22,14 @@ class DoctorDataService {
     return http.delete(`/store/deletestock/${productName}`);
   }
 
+  static editStock(product) {
+    return http.put('/store/editstock', product);
+  }
+
+  static getProduct(productName) {
+    return http.get(`/store/${productName}`);
+  }
+
 }
 
 export default DoctorDataService;

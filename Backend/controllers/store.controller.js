@@ -2,6 +2,18 @@ const Product = require('../models/product.model');
 
 const StoreController = {
 
+  // view one item
+  ViewOneItem: async (req, res) => {
+    console.log(req.params)
+    try {
+      const result = await Product.findOne(req.params);
+      res.json(result)
+    } catch(error) {
+      console.error(error);
+      res.status(404).json(error);
+    }
+  },
+
   //View items
   ViewAllItems: async (req, res) => {
     try {
