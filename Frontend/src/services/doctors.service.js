@@ -23,7 +23,7 @@ class DoctorDataService {
   }
 
   static editStock(product) {
-    return http.put('/store/editstock', product);
+    return http.put('/store/managestock', product);
   }
 
   static getProduct(productName) {

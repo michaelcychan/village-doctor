@@ -6,6 +6,34 @@ The project aims to build a frontend and a backend website for a imaginary villa
 
 The Frontend folder includes the frontend of the web application while the Backend folder includes the backend of the web application.  
 
+## Tech
+It is my first personal project with MERN. I chose MERN because I want to build a project with a separate frontend, backend, and a database. MERN works with the separation of concern pricinple. 
+
+<figure>
+<img src="./references/database/mern-structure.webp" />
+<figcaption align= center>Copyright: MongoDB</figcaption>
+</figure>
+
+My approach is to build a front end web service which is separated from a back end web service, so that I can scale up either end, or even replace one side with another programming langauge. That is why the domain address of backend server is not hardcoded, but was saved in a separate file `http-common.js`, which allows easy redirection.    
+
+The Front end application is divided into two halves, the doctors' side and the villagers' side, the functions are completely different but they get data from the same database. The back end server, therefore, is also divided into two havles. Theoretically, these parts can be migrated completely to another server if there is such need. Enhancement or feature change can be brought about without bringing the whole service down.  
+
+The heart of the whole application is the database. While in the testing environment, a local MongoDB is used, however, it can be migrated to MongoDB Atlas easily, which allows more flexibility.  
+
+### Frontend
+[React](https://reactjs.org/) - Frontend framework  
+[bootstrap](https://getbootstrap.com/) - Styling  
+
+### Backend
+[MongoDB](https://www.mongodb.com/) - Database  
+[Node.js](https://nodejs.org/en/) - Javascript Runtime  
+[Express](https://expressjs.com/) - Web server framework for Node.js  
+
+### Other tools
+[Postman](https://www.postman.com/) - API testing tool for backend  
+[TablePlus](https://tableplus.com/) - GUI tool for database  
+
+
 ## User Stories
 
 ### Villagers
@@ -66,7 +94,7 @@ I want to add stock items to store.
 so that I can manage my store,  
 I want to view all goods.  
 
-[] As a doctor,  
+[X] As a doctor,  
 so that I can refill stocks or amend stock description,  
 I want to edit information of existing stocks.  
 
@@ -77,31 +105,6 @@ I want to delete items that are no longer available.
 [] As a doctor,  
 so that the web functions are protected,  
 I want they are only available when doctors have logged in.
-
-## Tech
-My approach is to build a front end web service which is separated from a back end web service, so that I can scale up either end, or even replace one side with another programming langauge. That is why the domain address of backend server is not hardcoded, but was saved in a separate file `http-common.js`, which allows easy redirection.    
-
-The Front end application is divided into two halves, the doctors' side and the villagers' side, the functions are completely different but they get data from the same database. The back end server, therefore, is also divided into two havles. Theoretically, these parts can be migrated completely to another server if there is such need. Enhancement or feature change can be brought about without bringing the whole service down.  
-
-The heart of the whole application is the database. While in the testing environment, a local MongoDB is used, however, it can be migrated to MongoDB Atlas easily, which allows more flexibility.  
-
-### Frontend
-[React](https://reactjs.org/) - Frontend framework  
-[bootstrap](https://getbootstrap.com/) - Styling  
-
-### Backend
-[MongoDB](https://www.mongodb.com/) - Database  
-[Node.js](https://nodejs.org/en/) - Javascript Runtime  
-[Express](https://expressjs.com/) - Web server framework for Node.js  
-
-### Other tools
-[Postman](https://www.postman.com/) - API testing tool for backend  
-[TablePlus](https://tableplus.com/) - GUI tool for database  
-
-References:  
-https://www.youtube.com/watch?v=7CqJlxBYj-M  
-https://www.youtube.com/watch?v=mrHNSanmqQ4  
-https://reactjs.org/docs/hooks-state.html#gatsby-focus-wrapper  
 
 ## Installation
 Clone the repo to the machine:  

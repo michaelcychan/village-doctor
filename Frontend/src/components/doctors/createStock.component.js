@@ -83,7 +83,7 @@ const CreateStock = (props) => {
             onChange={handleInputChange}
           >
             <option value="" disabled={true}>Please select one</option>
-            { categories.map(cat => <option value={cat}>{cat}</option>) }
+            { categories.map(cat => <option key={cat} value={cat}>{cat}</option>) }
           </select>
         </div>
         <div className='form-group'>

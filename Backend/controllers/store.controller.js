@@ -4,7 +4,6 @@ const StoreController = {
 
   // view one item
   ViewOneItem: async (req, res) => {
-    console.log(req.params)
     try {
       const result = await Product.findOne(req.params);
       res.json(result)
@@ -41,7 +40,22 @@ const StoreController = {
   },
 
   UpdateItem: async (req, res) => {
-    Product.findOneAndUpdate
+    filter = {productName: req.body.productName}
+    update = {
+      price: req.body.price,
+      description: req.body.description,
+      category: req.body.category,
+      stockNumber: Number(req.body.stockNumber),
+      tag: req.body.tag
+    }
+    try {
+      const response = await Product.findOneAndUpdate(filter, update, {new: true})
+      res.json('update successful')
+    } catch(error) {
+      console.error(error)
+      res.status(409).json(error)
+    }
+    
   },
 
   DeleteItem: async (req, res) => {

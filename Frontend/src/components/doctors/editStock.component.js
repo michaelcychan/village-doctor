@@ -1,9 +1,10 @@
 import React, {Component, useEffect, useState} from 'react';
-import {useLocation} from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import DoctorDataService from '../../services/doctors.service';
 
 const EditStock = (props) => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const emptyStockState ={
     productName: "",
@@ -35,6 +36,9 @@ const EditStock = (props) => {
     e.preventDefault();
     try {
       console.log(itemData);
+      const response = await DoctorDataService.editStock(itemData);
+      console.log(response.data)
+      navigate("../manage")
     } catch(error) {
       console.error(error);
     }
@@ -54,7 +58,7 @@ const EditStock = (props) => {
             type='text'
             id='productName'
             name='productName'
-            disabled="true"
+            disabled={true}
             value={itemData.productName}
           />
         </div>

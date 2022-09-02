@@ -17,7 +17,6 @@ const ManageStock = (props) => {
   }, []) // [] means it only runs on first render
 
   const editButton = (productName) => {
-    console.log(`Edit button productName: ${productName}`);
     navigate("../edit", {
       state: {
         productName: `${productName}`
