@@ -35,9 +35,7 @@ const EditStock = (props) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log(itemData);
       const response = await DoctorDataService.editStock(itemData);
-      console.log(response.data)
       navigate("../manage")
     } catch(error) {
       console.error(error);
@@ -96,7 +94,7 @@ const EditStock = (props) => {
             onChange={handleInputChange}
           >
             <option value="" disabled={true}>Please select one</option>
-            { categories.map(cat => <option value={cat}>{cat}</option>) }
+            { categories.map(cat => <option key={cat} value={cat}>{cat}</option>) }
           </select>
         </div>
         <div className='form-group'>
