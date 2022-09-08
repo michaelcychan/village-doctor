@@ -4,27 +4,36 @@ import VillagerDataService from '../../services/villagers.service'
 
 const Shop = () => {
   const [itemArray, setItemArray] = useState([]);
-  const [shoppingCanoe, setShoppingCanoe] = useState([]);
 
-  const [itemQuantity, setItemQuantity] = useState(0);
+  const addQuantityToItems = async () => { // does not work
+    console.log('here')
+    await setItemArray(itemArray => {
+      return itemArray.map(item => {
+        item.quantity = 0;
+      })
+    })
+  }
+
+  // https://stackoverflow.com/questions/68256270/react-map-method-render-input-dynamically-change-value-separate-fields
 
   useEffect(() => {
-    const fetchAllItem = async () => {
+    const fetchAllItems = async () => {
       const {data: items} = await VillagerDataService.getAllStock();
+      items.forEach((item) => {
+        item.quantity = 0
+      })
       setItemArray(items);
     }
-    fetchAllItem();
+    fetchAllItems();
   }, [])
 
   const handleQuantityChange = (e) => {
     const {name, value} = e.target;
-    setItemQuantity(value)
+    console.log(e.target)
   }
 
   const addToCanoe = (e, productName, itemPrice, quantity) => {
     e.preventDefault();
-    console.log(productName)
-    console.log(e.target)
     const item = {
       "itemName": productName,
       "unitPrice": itemPrice,
@@ -49,7 +58,6 @@ const Shop = () => {
           </thead>
           <tbody>
             {itemArray.map(item => 
-
               <tr scope="row" key={item.productName}>
               <td>{item.productName}</td>
               <td>{item.price}</td>
@@ -61,10 +69,10 @@ const Shop = () => {
                     type="number"
                     min='0'
                     max={item.stockNumber}
-                    value={itemQuantity}
+                    value={item.quantity}
                     onChange={handleQuantityChange}
                   />
-                  <button type="submit" onClick={(e) => addToCanoe(e, item.productName, item.price, itemQuantity)} className="btn">🛶</button>
+                  <button type="submit" onClick={(e) => addToCanoe(e, item.productName, item.price, item.quantity)} className="btn">🛶</button>
               </td>
             </tr>
             )}
