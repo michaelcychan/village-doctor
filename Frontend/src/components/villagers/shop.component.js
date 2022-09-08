@@ -5,6 +5,7 @@ import VillagerDataService from '../../services/villagers.service'
 const Shop = () => {
   const [itemArray, setItemArray] = useState([]);
 
+  const [shoppingCanoe, setShoppingCanoe] = useState([]);
   // https://stackoverflow.com/questions/68256270/react-map-method-render-input-dynamically-change-value-separate-fields
 
   useEffect(() => {
@@ -18,6 +19,7 @@ const Shop = () => {
     fetchAllItems();
   }, [])
 
+  // reference: https://bobbyhadz.com/blog/react-update-object-in-array
   const handleQuantityChange = (e) => {
     const newItemArray = itemArray.map(item => {
       if (item.productName === e.target.id) {
@@ -36,9 +38,12 @@ const Shop = () => {
         "unitPrice": itemPrice,
         "quantity": quantity
       }
+      console.log('new item:')
       console.log(item)
+      setShoppingCanoe(existingArray => [...existingArray, item])
     }
-    
+    console.log('shopping canoe:')
+    console.log(shoppingCanoe)
   }
   
   return(
@@ -52,7 +57,8 @@ const Shop = () => {
               <th scope="col">Price</th>
               <th scope="col">Description</th>
               <th scope="col">Category</th>
-              <th scope="to_cart">Add to Canoe</th>
+              <th scope="to_cart">Quantity</th>
+              <th scope="to_cart"> </th>
             </tr>
           </thead>
           <tbody>
@@ -62,9 +68,9 @@ const Shop = () => {
               <td>{item.price}</td>
               <td className='w-50'>{item.description}</td>
               <td>{item.category}</td>
-              <td>
+              <td className='w-25'>
                   <input
-                    className="form-control w-75"
+                    className="form-control"
                     id={item.productName}
                     type="number"
                     min='0'
@@ -72,7 +78,9 @@ const Shop = () => {
                     value={item.quantity}
                     onChange={handleQuantityChange}
                   />
-                  <button type="submit" onClick={(e) => addToCanoe(e, item.productName, item.price, item.quantity)} className="btn">🛶</button>
+              </td>
+              <td>
+              <button type="submit" onClick={(e) => addToCanoe(e, item.productName, item.price, item.quantity)} className="btn btn-success">Update 🛶</button>
               </td>
             </tr>
             )}

@@ -53,9 +53,13 @@ I want my password to be hashed.
 so that I can see doctor,  
 I want to make a booking with doctor with my chosen date.  
 
+[x] As a villager,
+so that I can browse store,  
+I want to be able to view available items.  
+
 [] As a villager,
 so that I can browse store,  
-I want to be able to view available items(stock > 0).  
+I want to be able to view items of a selected category. 
 
 [] As a villager,
 so that I can buy from store,  
