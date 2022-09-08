@@ -2,10 +2,9 @@
 import React, {Component, useState, useEffect} from 'react';
 import VillagerDataService from '../../services/villagers.service'
 
-const Shop = () => {
+const Shop = (props) => {
   const [itemArray, setItemArray] = useState([]);
 
-  const [shoppingCanoe, setShoppingCanoe] = useState([]);
   // https://stackoverflow.com/questions/68256270/react-map-method-render-input-dynamically-change-value-separate-fields
 
   useEffect(() => {
@@ -40,10 +39,10 @@ const Shop = () => {
       }
       console.log('new item:')
       console.log(item)
-      setShoppingCanoe(existingArray => [...existingArray, item])
+      props.setShoppingCanoe(existingArray => [...existingArray, item])
     }
     console.log('shopping canoe:')
-    console.log(shoppingCanoe)
+    console.log(props.shoppingCanoe)
   }
   
   return(

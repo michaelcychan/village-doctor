@@ -15,7 +15,7 @@ const NavbarVillager = (props) => {
         <div className="justify-content-center collapse navbar-collapse" id="collapsingNavbarVillagers">
           <ul className="mx-auto w-70 navbar-nav justify-content-center">
             <li className='navbar-item'>
-              <NavLink to={"shop"} className="nav-link">Shop</NavLink>
+              <NavLink to={"shop"} className="nav-link" shoppingCanoe={props.shoppingCanoe} setShoppingCanoe={props.setShoppingCanoe}>Shop</NavLink>
             </li>
             <li className='navbar-item'>
               <NavLink to={"booking"} className="nav-link">Booking</NavLink>
