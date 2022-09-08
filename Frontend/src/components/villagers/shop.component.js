@@ -5,15 +5,6 @@ import VillagerDataService from '../../services/villagers.service'
 const Shop = () => {
   const [itemArray, setItemArray] = useState([]);
 
-  const addQuantityToItems = async () => { // does not work
-    console.log('here')
-    await setItemArray(itemArray => {
-      return itemArray.map(item => {
-        item.quantity = 0;
-      })
-    })
-  }
-
   // https://stackoverflow.com/questions/68256270/react-map-method-render-input-dynamically-change-value-separate-fields
 
   useEffect(() => {
@@ -28,18 +19,26 @@ const Shop = () => {
   }, [])
 
   const handleQuantityChange = (e) => {
-    const {name, value} = e.target;
-    console.log(e.target)
+    const newItemArray = itemArray.map(item => {
+      if (item.productName === e.target.id) {
+        return {...item, quantity: e.target.value}
+      }
+      return item
+    })
+    setItemArray(newItemArray)
   }
 
   const addToCanoe = (e, productName, itemPrice, quantity) => {
     e.preventDefault();
-    const item = {
-      "itemName": productName,
-      "unitPrice": itemPrice,
-      "quantity": quantity
+    if (quantity != 0) {
+      const item = {
+        "itemName": productName,
+        "unitPrice": itemPrice,
+        "quantity": quantity
+      }
+      console.log(item)
     }
-    console.log(item)
+    
   }
   
   return(
@@ -66,6 +65,7 @@ const Shop = () => {
               <td>
                   <input
                     className="form-control w-75"
+                    id={item.productName}
                     type="number"
                     min='0'
                     max={item.stockNumber}
