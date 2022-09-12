@@ -14,28 +14,6 @@ const VillagerPage = (props) => {
           {(props.villager) && <p>Welcome, {props.villager.name}</p>}
         </div>
         <button onClick={props.logout} className="btn btn-success" >Log out</button>
-        <div>
-          <table className='table'>
-            <thead>
-              <tr>
-                <th scope='col'>Item Name</th>
-                <th scope='col'>Item price</th>
-                <th scope='col'>Quantity</th>
-                <th scope='col'>Sub-total</th>
-              </tr>
-            </thead>
-            <tbody>
-              {shoppingCanoe.map(item =>
-                <tr scope='row' key={item.productName}>
-                <td>{item.productName}</td>
-                <td>{item.price}</td>
-                <td>{item.quantity}</td>
-                <td>{item.quantity * item.price}</td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
     </>
   )
 }

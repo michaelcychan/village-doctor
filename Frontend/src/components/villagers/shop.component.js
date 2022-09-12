@@ -19,6 +19,20 @@ const Shop = (props) => {
     fetchAllItems();
   }, [])
 
+  useEffect(() => {
+    if (shoppingCanoe.length > 0) {
+      console.log('inside if clause')
+      console.log(shoppingCanoe)
+      const updateTotalCost = () => {
+        const newCost = shoppingCanoe.reduce((acc, item) => {
+          return acc + item.unitPrice * item.quantity
+        }, 0)
+        setTotalCost(newCost)
+      }
+      updateTotalCost()
+    }
+  }, [shoppingCanoe])
+
   // reference: https://bobbyhadz.com/blog/react-update-object-in-array
   const handleQuantityChange = (e) => {
     const newItemArray = itemArray.map(item => {
@@ -32,15 +46,16 @@ const Shop = (props) => {
 
   const addToCanoe = (e, productName, itemPrice, quantity) => {
     e.preventDefault();
-    if (quantity != 0) {
-      const item = {
-        "itemName": productName,
-        "unitPrice": itemPrice,
-        "quantity": quantity
-      }
-      setShoppingCanoe(existingArray => [...existingArray, item])
-      setTotalCost(totalCost + item.quantity * item.unitPrice)
+    const item = {
+      "itemName": productName,
+      "unitPrice": itemPrice,
+      "quantity": quantity
     }
+    setShoppingCanoe(existingArray => [...existingArray, item])
+  }
+
+  const checkOut = () => {
+    console.log(shoppingCanoe)
   }
   
   return(
@@ -86,6 +101,7 @@ const Shop = (props) => {
           </tbody>
           </table>
           <h2>Total cost: {totalCost} </h2>
+          <button onClick={checkOut}>Proceed to Checkout</button>
         </div>
     </div>
   )
