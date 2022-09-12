@@ -4,7 +4,8 @@ import VillagerDataService from '../../services/villagers.service'
 
 const Shop = (props) => {
   const [itemArray, setItemArray] = useState([]);
-
+  const [shoppingCanoe, setShoppingCanoe] = useState([])
+  const [totalCost, setTotalCost] = useState(0);
   // https://stackoverflow.com/questions/68256270/react-map-method-render-input-dynamically-change-value-separate-fields
 
   useEffect(() => {
@@ -37,12 +38,9 @@ const Shop = (props) => {
         "unitPrice": itemPrice,
         "quantity": quantity
       }
-      console.log('new item:')
-      console.log(item)
-      props.setShoppingCanoe(existingArray => [...existingArray, item])
+      setShoppingCanoe(existingArray => [...existingArray, item])
+      setTotalCost(totalCost + item.quantity * item.unitPrice)
     }
-    console.log('shopping canoe:')
-    console.log(props.shoppingCanoe)
   }
   
   return(
@@ -56,8 +54,9 @@ const Shop = (props) => {
               <th scope="col">Price</th>
               <th scope="col">Description</th>
               <th scope="col">Category</th>
-              <th scope="to_cart">Quantity</th>
-              <th scope="to_cart"> </th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Item sub-total</th>
+              <th scope="col"> </th>
             </tr>
           </thead>
           <tbody>
@@ -78,6 +77,7 @@ const Shop = (props) => {
                     onChange={handleQuantityChange}
                   />
               </td>
+              <td>{item.price * item.quantity}</td>
               <td>
               <button type="submit" onClick={(e) => addToCanoe(e, item.productName, item.price, item.quantity)} className="btn btn-success">Update 🛶</button>
               </td>
@@ -85,6 +85,7 @@ const Shop = (props) => {
             )}
           </tbody>
           </table>
+          <h2>Total cost: {totalCost} </h2>
         </div>
     </div>
   )
