@@ -1,11 +1,11 @@
 import React, {Component, useState} from 'react';
+import DoctorDataService from '../../services/doctors.service';
 
 const Appointment = (props) => {
 
   // create variables
   const today = new Date()
   const [date, setDate] = useState(today);
-  const [docNotes, setDocNotes] = useState(null);
   const [docLogin, SetDocLogin] = useState('IMPORT-FROM-SESSION');
   const [villagerPigeonMail, SetVillagerPigeonMail] = useState('IMPORT-FROM-SERVER-RESPONSE');
 
@@ -19,29 +19,25 @@ const Appointment = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const newAppointment = {
+    const appointmentData = {
       date: date,
-      docNotes: docNotes,
-      docLogin: docLogin,
-      villagerPigeonMail: villagerPigeonMail
     }
-    console.log(newAppointment);
+    console.log(appointmentData);
+    DoctorDataService.searchAppointment(appointmentData)
+      .then(response => console.log(response))
+      .catch(error => console.error(error))
   }
 
   return(
     <div>
-      <p>Appointment</p>
+      <p>Search Appointment</p>
       <form onSubmit={onSubmit}>
         <div className='form-group'>
           <label htmlFor='date'>Appointment Date:</label>
-          <input required type='date' className='form-control' id='date' name='date' defaultValue={today.toISOString().split('T')[0]} />
+          <input required type='date' className='form-control' id='date' name='date' onChange={onChangeDate} defaultValue={today.toISOString().split('T')[0]} />
         </div>
         <div className='form-group'>
-          <label htmlFor="docNotes">Doctor's Notes:</label>
-          <input required className="form-control" type="text" id="docNotes" name="docNotes" />
-        </div>
-        <div className='form-group'>
-          <input type="submit" className="btn btn-success" />
+          <input type="submit" className="btn btn-danger" />
         </div>
       </form>
     

@@ -1,6 +1,15 @@
 const HomeController = {
   Index: (req, res) => {
-    res.json('Welcome to Village Doctor Backend');
+    console.log(req)
+    console.log(`query: ${req.query}`)
+    console.log(`body: ${req.body}`)
+    console.log(`params: ${req.params}`)
+    if (req.query.name) {
+      res.json(`${req.query.name}, welcome to Village Doctor Backend!`)
+    } else {
+      res.json('Welcome to Village Doctor Backend');
+    }
+    
   },
 
 }

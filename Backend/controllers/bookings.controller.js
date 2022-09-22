@@ -7,13 +7,11 @@ const BookingController = {
   },
   Create: (req, res) => {
     const booking = new Booking({
-      // need to update according to model change
       date: Date.parse(req.body.date),
       villagerPigeonMail: req.body.villagerpigeonmail,
       dob: Date.parse(req.body.dob),
       complainOf: req.body.complainOf,
     });
-    console.log(booking)
     booking.save((error, result) => {
       if (error) {
         console.log(error);

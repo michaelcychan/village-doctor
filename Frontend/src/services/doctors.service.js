@@ -30,6 +30,10 @@ class DoctorDataService {
     return http.get(`/store/${productName}`);
   }
 
+  static searchAppointment(searchData) {
+    return http.get('/bookings/show/', searchData);
+  }
+
 }
 
 export default DoctorDataService;
