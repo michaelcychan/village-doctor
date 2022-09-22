@@ -27,6 +27,11 @@ const BookingController = {
     Booking.find({villagerpigeonmail: req.session.villagerpigeonmail})
       .then(bookings => res.json(bookings))
       .catch(error => res.status(400).json('Error: ' + error));
+  },
+  ShowAll: (req, res) => {
+    Booking.find()
+      .then(bookings => res.json(bookings))
+      .catch(error => res.status(400).json('Error ' + error))
   }
 }
 
