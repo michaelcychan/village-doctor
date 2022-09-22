@@ -50,19 +50,19 @@ const MakeBooking = (props) => {
       <form onSubmit={onSubmit}>
         <div className='form-group'>
           <label htmlFor="villagerPigeonMail">Your Pigeon Mail:</label>
-          <input required className="form-control" id="villagerPigeonMail" name="villagerPigeonMail" />
+          <input required className="form-control" id="villagerPigeonMail" name="villagerPigeonMail" onChange={onChangeVillagerPigeonMail} />
         </div>
         <div className='form-group'>
           <label htmlFor="complainOf">Your complaint:</label>
-          <input required className="form-control" type="text" id="complainOf" name="complainOf" />
+          <textarea required className="form-control" id="complainOf" name="complainOf" onChange={onChangeComplainOf} />
         </div>
         <div className='form-group'>
           <label htmlFor="dob">Date of Birth:</label>
-          <input required type ="date" id="dob" name="dob" className="form-control"/>
+          <input required type ="date" id="dob" name="dob" max={defaultBookingDate.toISOString().split('T')[0]} className="form-control" onChange={onChangeDob} />
         </div>
         <div className='form-group'>
           <label htmlFor="date">Your booking date:</label>
-          <input required type="date" id="date" name="date" className="form-control" defaultValue={defaultBookingDate.toISOString().split('T')[0]} />
+          <input required type="date" id="date" name="date" className="form-control" onChange={onChangeDate} min={defaultBookingDate.toISOString().split('T')[0]} defaultValue={defaultBookingDate.toISOString().split('T')[0]} />
         </div>
         <div className='form-group'>
           <input type="submit" className="btn btn-success" />
