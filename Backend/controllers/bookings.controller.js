@@ -2,16 +2,18 @@ const Booking = require('../models/booking.model');
 
 const BookingController = {
   Index: (req, res) => {
+    console.log('booking index')
     res.json({title: "Make a booking", session: req.session});
   },
   Create: (req, res) => {
     const booking = new Booking({
       // need to update according to model change
       date: Date.parse(req.body.date),
-      villagerpigeonmail: req.body.villagerpigeonmail,
+      villagerPigeonMail: req.body.villagerpigeonmail,
       dob: req.body.dob,
-      complainof: req.body.complainof,
+      complainOf: req.body.complainOf,
     });
+    console.log(booking)
     booking.save((error, result) => {
       if (error) {
         console.log(error);
