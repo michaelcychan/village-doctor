@@ -1,5 +1,6 @@
 // eslint-disable-next-line
 import React, {Component, useState} from 'react';
+import VillagerDataService from '../../services/villagers.service'
 
 const MakeBooking = (props) => {
 
@@ -32,7 +33,7 @@ const MakeBooking = (props) => {
     setComplainOf(e.target.value)
   }
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     const newBooking = {
       villagerpigeonmail: villagerPigeonMail,
@@ -40,8 +41,14 @@ const MakeBooking = (props) => {
       complainOf: complainOf,
       date: date
     }
-
-    console.log(newBooking);
+    console.log(newBooking)
+    try {
+      const response = await VillagerDataService.createBooking(newBooking);
+      console.log(response)
+    } catch(error) {
+      console.error(error)
+    }
+    
   }
 
   return(

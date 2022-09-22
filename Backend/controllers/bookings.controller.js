@@ -10,7 +10,7 @@ const BookingController = {
       // need to update according to model change
       date: Date.parse(req.body.date),
       villagerPigeonMail: req.body.villagerpigeonmail,
-      dob: req.body.dob,
+      dob: Date.parse(req.body.dob),
       complainOf: req.body.complainOf,
     });
     console.log(booking)

@@ -17,8 +17,8 @@ class VillagerDataService {
     return http.get(`/villagers/show?page=${page}`);
   }
 
-  createBooking(data){
-    return http.post('/villagers/new', data);
+  static createBooking(data){
+    return http.post('/bookings/new', data);
   }
 };
 
