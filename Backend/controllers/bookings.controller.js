@@ -24,7 +24,8 @@ const BookingController = {
     })
   },
   Show: (req, res) => {
-    Booking.find({villagerpigeonmail: req.session.villagerpigeonmail})
+    console.log(req.body)
+    Booking.find({date: req.body.date})
       .then(bookings => res.json(bookings))
       .catch(error => res.status(400).json('Error: ' + error));
   },
