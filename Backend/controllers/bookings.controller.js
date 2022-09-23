@@ -22,8 +22,10 @@ const BookingController = {
     })
   },
   Show: (req, res) => {
-    console.log(req.body)
-    Booking.find({date: req.body.date})
+    const searchData = {
+      date: Date.parse(req.query.date)
+    }
+    Booking.find(searchData)
       .then(bookings => res.json(bookings))
       .catch(error => res.status(400).json('Error: ' + error));
   },
