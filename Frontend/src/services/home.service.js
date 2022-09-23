@@ -6,9 +6,7 @@ class HomeDataService {
   }
 
   static sayHiToServerWithName() {
-    const name = "Eagle Head"
-    console.log(params)
-    return http.get('/', {params: {name:  name}})
+    return http.get('/', {params: {name: "Eagle Head"}})
   }
 };
 
