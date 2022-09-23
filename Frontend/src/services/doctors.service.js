@@ -31,7 +31,7 @@ class DoctorDataService {
   }
 
   static searchAppointment(searchData) {
-    return http.get('/bookings/show/', searchData);
+    return http.get('/bookings/show/', {params: searchData});
   }
 
 }
