@@ -41,10 +41,8 @@ const MakeBooking = (props) => {
       complainOf: complainOf,
       date: date
     }
-    console.log(newBooking)
     try {
       const response = await VillagerDataService.createBooking(newBooking);
-      console.log(response)
     } catch(error) {
       console.error(error)
     }

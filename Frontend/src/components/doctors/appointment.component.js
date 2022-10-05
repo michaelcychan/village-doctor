@@ -27,7 +27,6 @@ const Appointment = (props) => {
     const appointmentData = {
       date: date,
     }
-    console.log(appointmentData);
     DoctorDataService.searchAppointment(appointmentData)
       .then(response => SetApppointmentList(response.data))
       .catch(error => console.error(error))
