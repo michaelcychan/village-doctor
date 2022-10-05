@@ -22,14 +22,12 @@ const Shop = (props) => {
 
   // reference: https://bobbyhadz.com/blog/react-update-object-in-array
   const handleQuantityChange = (e) => {
-    console.log(e.target.id)
     const newItemArray = itemArray.map(item => {
       if (item.productName == e.target.id) {
         return {...item, quantity: e.target.value}
       } else {
         return item
       }
-      
     })
     setItemArray(newItemArray)
   }
@@ -53,9 +51,7 @@ const Shop = (props) => {
       return acc + item.unitPrice * item.quantity
     }, 0)
     setTotalCost(newCost)
-  
     setShoppingCanoe(tempCanoe)
-    //setShoppingCanoe(existingArray => [...existingArray, item])
   }
 
   const checkOut = () => {
