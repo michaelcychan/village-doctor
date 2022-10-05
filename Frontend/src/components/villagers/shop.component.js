@@ -8,6 +8,7 @@ const Shop = (props) => {
   const [totalCost, setTotalCost] = useState(0);
   // https://stackoverflow.com/questions/68256270/react-map-method-render-input-dynamically-change-value-separate-fields
 
+  // this is to get items from database and show on page
   useEffect(() => {
     const fetchAllItems = async () => {
       const {data: items} = await VillagerDataService.getAllStock();
@@ -19,27 +20,16 @@ const Shop = (props) => {
     fetchAllItems();
   }, [])
 
-  useEffect(() => {
-    if (shoppingCanoe.length > 0) {
-      console.log('inside if clause')
-      console.log(shoppingCanoe)
-      const updateTotalCost = () => {
-        const newCost = shoppingCanoe.reduce((acc, item) => {
-          return acc + item.unitPrice * item.quantity
-        }, 0)
-        setTotalCost(newCost)
-      }
-      updateTotalCost()
-    }
-  }, [shoppingCanoe])
-
   // reference: https://bobbyhadz.com/blog/react-update-object-in-array
   const handleQuantityChange = (e) => {
+    console.log(e.target.id)
     const newItemArray = itemArray.map(item => {
-      if (item.productName === e.target.id) {
+      if (item.productName == e.target.id) {
         return {...item, quantity: e.target.value}
+      } else {
+        return item
       }
-      return item
+      
     })
     setItemArray(newItemArray)
   }
@@ -51,11 +41,28 @@ const Shop = (props) => {
       "unitPrice": itemPrice,
       "quantity": quantity
     }
-    setShoppingCanoe(existingArray => [...existingArray, item])
+
+    const tempCanoe = shoppingCanoe
+    const index = tempCanoe.findIndex(element => element.itemName == item.itemName)
+    if (index != -1 ) {
+      tempCanoe.splice(index,1)
+    }
+    tempCanoe.push(item)
+
+    const newCost = tempCanoe.reduce((acc, item) => {
+      return acc + item.unitPrice * item.quantity
+    }, 0)
+    setTotalCost(newCost)
+  
+    setShoppingCanoe(tempCanoe)
+    //setShoppingCanoe(existingArray => [...existingArray, item])
   }
 
   const checkOut = () => {
+    console.log('Checking out... Below is content of shopping Canoe')
     console.log(shoppingCanoe)
+    console.log('Here is the total price:')
+    console.log(totalCost)
   }
   
   return(
