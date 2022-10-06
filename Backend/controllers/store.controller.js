@@ -72,14 +72,12 @@ const StoreController = {
     const buyingArray = req.body
     console.log(buyingArray[0])
     buyingArray.forEach((itemObj) => {
-      console.log(itemObj)
       const filter = {productName: itemObj.itemName}
       
       Product.findOneAndUpdate(filter, { $inc: {stockNumber: itemObj.quantity * - 1}}, {new: true} )
         .then(response => console.log(response))
     })
     // need to add transaction record
-    // need to update stock amount
 
     res.status(200).json(`Transaction through backend. First item: ${buyingArray[0].itemName}`)
   }
