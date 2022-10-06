@@ -40,8 +40,8 @@ const StoreController = {
   },
 
   UpdateItem: async (req, res) => {
-    filter = {productName: req.body.productName}
-    update = {
+    const filter = {productName: req.body.productName}
+    const update = {
       price: req.body.price,
       description: req.body.description,
       category: req.body.category,
@@ -69,7 +69,11 @@ const StoreController = {
   },
 
   Checkout: (req, res) => {
-    console.log(req.body)
+    const buyingArray = req.body
+
+    // need to add transaction record
+    // need to update stock amount
+
     res.status(200).json('Transaction through backend')
   }
 };
