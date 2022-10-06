@@ -66,6 +66,11 @@ const StoreController = {
       console.error(error);
       res.status(409).json(error);
     }
+  },
+
+  Checkout: (req, res) => {
+    console.log(req.body)
+    res.status(200).json('Transaction through backend')
   }
 };
 

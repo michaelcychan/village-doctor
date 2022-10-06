@@ -59,6 +59,11 @@ const Shop = (props) => {
     console.log(shoppingCanoe)
     console.log('Here is the total price:')
     console.log(totalCost)
+    VillagerDataService.checkout(shoppingCanoe)
+      .then(response => {
+        console.log('here is response from server:')
+        console.log(response.data)
+      } )
   }
   
   return(

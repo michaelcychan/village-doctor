@@ -12,6 +12,10 @@ class VillagerDataService {
   static getAllStock = (page = 1) => {
     return http.get(`/store/view?page=${page}`);
   }
+
+  static checkout = (shoppingCanoe) => {
+    return http.post('/store/checkout', shoppingCanoe);
+  }
   
   getAll(page = 0){
     return http.get(`/villagers/show?page=${page}`);
