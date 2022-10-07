@@ -6,6 +6,7 @@ const Shop = (props) => {
   const [itemArray, setItemArray] = useState([]);
   const [shoppingCanoe, setShoppingCanoe] = useState([])
   const [totalCost, setTotalCost] = useState(0);
+  const [message, setMessage] = useState();
   // https://stackoverflow.com/questions/68256270/react-map-method-render-input-dynamically-change-value-separate-fields
 
   // this is to get items from database and show on page
@@ -64,8 +65,9 @@ const Shop = (props) => {
     updateShoppingCanoe(tempCanoe)
   }
 
-  const refreshPage = () => {
-    window.location.reload()
+  const resetCanoe = () => {
+    setShoppingCanoe([])
+    setTotalCost(0)
   }
 
   const checkOut = () => {
@@ -77,6 +79,8 @@ const Shop = (props) => {
       .then(response => {
         if (response.data == 'OK') {
           fetchAllItems()
+          resetCanoe()
+          setMessage('Thank you for buying!')
         }
       } )
   }
@@ -125,6 +129,7 @@ const Shop = (props) => {
             )}
           </tbody>
           </table>
+          {(message) && <h2>{message}</h2>}
           <h2>Total cost: {totalCost} </h2>
           <button onClick={checkOut}>Proceed to Checkout</button>
         </div>
