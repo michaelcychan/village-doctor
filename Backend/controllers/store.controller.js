@@ -1,4 +1,5 @@
 const Product = require('../models/product.model');
+const Transaction = require('../models/transaction.model');
 
 const StoreController = {
 
@@ -71,15 +72,23 @@ const StoreController = {
   Checkout: (req, res) => {
     const buyingArray = req.body
     console.log(buyingArray[0])
+    let totalCost = 0
     buyingArray.forEach((itemObj) => {
       const filter = {productName: itemObj.itemName}
-      
+      totalCost += itemObj.unitPrice * itemObj.quantity
       Product.findOneAndUpdate(filter, { $inc: {stockNumber: itemObj.quantity * - 1}}, {new: true} )
         .then(response => console.log(response))
     })
-    // need to add transaction record
 
-    res.status(200).json(`Transaction through backend. First item: ${buyingArray[0].itemName}`)
+    // need to add transaction record
+    const transaction = {
+      totalCost: totalCost,
+      items: buyingArray
+    }
+    const transObj = new Transaction(transaction)
+    transObj.save()
+      .then(data => res.status(200).json('OK'))
+      .catch(err => console.error(err))
   }
 };
 

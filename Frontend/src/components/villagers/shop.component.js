@@ -9,14 +9,16 @@ const Shop = (props) => {
   // https://stackoverflow.com/questions/68256270/react-map-method-render-input-dynamically-change-value-separate-fields
 
   // this is to get items from database and show on page
+
+  const fetchAllItems = async () => {
+    const {data: items} = await VillagerDataService.getAllStock();
+    items.forEach((item) => {
+      item.quantity = 0
+    })
+    setItemArray(items);
+  }
+
   useEffect(() => {
-    const fetchAllItems = async () => {
-      const {data: items} = await VillagerDataService.getAllStock();
-      items.forEach((item) => {
-        item.quantity = 0
-      })
-      setItemArray(items);
-    }
     fetchAllItems();
   }, [])
 
@@ -32,12 +34,20 @@ const Shop = (props) => {
     setItemArray(newItemArray)
   }
 
+  const updateTotalCost = (newCost) => {
+    setTotalCost(newCost)
+  }
+
+  const updateShoppingCanoe = (newCanoeList) => {
+    setShoppingCanoe(newCanoeList)
+  }
+
   const addToCanoe = (e, productName, itemPrice, quantity) => {
     e.preventDefault();
     const item = {
       "itemName": productName,
       "unitPrice": itemPrice,
-      "quantity": quantity
+      "quantity": Number(quantity)
     }
 
     const tempCanoe = shoppingCanoe
@@ -50,8 +60,12 @@ const Shop = (props) => {
     const newCost = tempCanoe.reduce((acc, item) => {
       return acc + item.unitPrice * item.quantity
     }, 0)
-    setTotalCost(newCost)
-    setShoppingCanoe(tempCanoe)
+    updateTotalCost(newCost)
+    updateShoppingCanoe(tempCanoe)
+  }
+
+  const refreshPage = () => {
+    window.location.reload()
   }
 
   const checkOut = () => {
@@ -61,8 +75,9 @@ const Shop = (props) => {
     console.log(totalCost)
     VillagerDataService.checkout(shoppingCanoe)
       .then(response => {
-        console.log('here is response from server:')
-        console.log(response.data)
+        if (response.data == 'OK') {
+          fetchAllItems()
+        }
       } )
   }
   
@@ -75,6 +90,7 @@ const Shop = (props) => {
           <tr>
               <th scope="col">Name</th>
               <th scope="col">Price</th>
+              <th scope="col">Stock</th>
               <th scope="col">Description</th>
               <th scope="col">Category</th>
               <th scope="col">Quantity</th>
@@ -87,6 +103,7 @@ const Shop = (props) => {
               <tr scope="row" key={item.productName}>
               <td>{item.productName}</td>
               <td>{item.price}</td>
+              <td>{item.stockNumber}</td>
               <td className='w-50'>{item.description}</td>
               <td>{item.category}</td>
               <td className='w-25'>
