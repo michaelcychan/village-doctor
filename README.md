@@ -61,7 +61,7 @@ I want to be able to view available items.
 so that I can browse store,  
 I want to be able to view items of a selected category. 
 
-[] As a villager,
+[X] As a villager,
 so that I can buy from store,  
 I want to add items to shopping cart.  
 
@@ -104,7 +104,15 @@ I want to edit information of existing stocks.
 
 [X] As a doctor,  
 so that I can keep my store up to date,  
-I want to delete items that are no longer available.  
+I want to delete items that are no longer available. 
+
+[X] As a doctor,  
+so that I can stocktake,  
+I want to all transactions to be saved.
+
+[] As a doctor,  
+so that I can stocktake,  
+I want to see previous transactions.  
 
 [] As a doctor,  
 so that the web functions are protected,  

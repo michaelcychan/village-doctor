@@ -129,9 +129,9 @@ const Shop = (props) => {
             )}
           </tbody>
           </table>
-          {(message) && <h2>{message}</h2>}
-          <h2>Total cost: {totalCost} </h2>
-          <button onClick={checkOut}>Proceed to Checkout</button>
+          {(message) && <h2 className='text-warning'>{message}</h2>}
+          <h2>Total cost: <span className='text-info'> {totalCost} </span></h2>
+          <button className='btn btn-success' onClick={checkOut}>Proceed to Checkout</button>
         </div>
     </div>
   )
